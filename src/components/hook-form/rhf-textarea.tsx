@@ -1,3 +1,4 @@
+"use client";
 import { useFormContext } from "react-hook-form";
 
 import {
@@ -8,7 +9,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Textarea } from "../ui/textarea";
-import { cn } from "@/lib/utils";
+import { cn } from "~/lib/utils";
 import { useEffect, useRef, useState } from "react";
 interface IProps {
   name: string;

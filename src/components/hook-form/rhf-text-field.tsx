@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
-import { useFormContext } from 'react-hook-form';
-import { Input } from '../ui/input';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
+"use client";
+import React, { useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { Input } from "../ui/input";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
 
 interface IProps {
   name: string;
@@ -12,9 +19,18 @@ interface IProps {
   maxLength?: number;
 }
 
-export function RHFTextField({ name, placeholder, label, defaultValue, type, maxLength }: IProps) {
+export function RHFTextField({
+  name,
+  placeholder,
+  label,
+  defaultValue,
+  type,
+  maxLength,
+}: IProps) {
   const { control } = useFormContext();
-  const [charCount, setCharCount] = useState(defaultValue ? defaultValue.length : 0);
+  const [charCount, setCharCount] = useState(
+    defaultValue ? defaultValue.length : 0
+  );
 
   return (
     <FormField
