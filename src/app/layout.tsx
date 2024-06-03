@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
-import { Header } from "~/feature/navigation";
+import { Header, SideBar } from "~/feature/navigation";
 const ReduxProviders = dynamic(() => import("~/store/store-provider"), {
   ssr: false,
 });
@@ -23,10 +23,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ReduxProviders>
-          <header className="px-4 py-2 h-14">
-            <Header />
-          </header>
-          {children}
+          <Header />
+          <div className="flex gap-3 w-8/12">
+            <SideBar />
+
+            {children}
+          </div>
         </ReduxProviders>
       </body>
     </html>

@@ -1,9 +1,9 @@
 import React from "react";
 import { Post as IPost } from "../types";
 import Image from "next/image";
-interface PostProps extends IPost {}
+interface Props extends IPost {}
 
-export function Post({ title, imageUrls, text, linkUrl }: PostProps) {
+export function Post({ title, imageUrls, text, linkUrl }: Props) {
   return (
     <div className="flex flex-col gap-2 hover:bg-slate-100 rounded-lg px-4 py-2">
       <div className="flex gap-2 text-xs">

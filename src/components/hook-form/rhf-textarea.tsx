@@ -10,8 +10,8 @@ import {
 } from "../ui/form";
 import { Textarea } from "../ui/textarea";
 import { cn } from "~/lib/utils";
-import { useEffect, useRef, useState } from "react";
-interface IProps {
+import { useState } from "react";
+interface Props {
   name: string;
   placeholder?: string;
   label?: string;
@@ -29,11 +29,9 @@ export function RHFTextArea({
   type,
   className,
   maxLength,
-}: IProps) {
-  const { control } = useFormContext();
-  const [charCount, setCharCount] = useState(
-    defaultValue ? defaultValue.length : 0
-  );
+}: Props) {
+  const { control, watch } = useFormContext();
+  const charCount = watch(name).length;
   return (
     <FormField
       control={control}
@@ -48,10 +46,6 @@ export function RHFTextArea({
               {...field}
               className={cn(className || "")}
               maxLength={maxLength}
-              onChange={(e) => {
-                setCharCount(e.target.value.length);
-                field.onChange(e);
-              }}
             />
           </FormControl>
           {maxLength && (

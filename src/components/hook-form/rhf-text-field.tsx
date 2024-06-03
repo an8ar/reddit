@@ -10,7 +10,7 @@ import {
   FormMessage,
 } from "../ui/form";
 
-interface IProps {
+interface Props {
   name: string;
   placeholder?: string;
   label?: string;
@@ -26,11 +26,9 @@ export function RHFTextField({
   defaultValue,
   type,
   maxLength,
-}: IProps) {
-  const { control } = useFormContext();
-  const [charCount, setCharCount] = useState(
-    defaultValue ? defaultValue.length : 0
-  );
+}: Props) {
+  const { control, watch } = useFormContext();
+  const charCount = watch(name).length;
 
   return (
     <FormField
@@ -46,10 +44,6 @@ export function RHFTextField({
               {...field}
               type={type}
               maxLength={maxLength}
-              onChange={(e) => {
-                setCharCount(e.target.value.length);
-                field.onChange(e);
-              }}
             />
           </FormControl>
           {maxLength && (

@@ -1,6 +1,7 @@
-import React from 'react';
-import { useAppSelector } from '~/store';
-import { Post } from './post';
+"use client";
+import React from "react";
+import { useAppSelector } from "~/store/hooks";
+import { Post } from "./post";
 export function PostList() {
   const posts = useAppSelector((state) => state.postsSlice.posts);
 
