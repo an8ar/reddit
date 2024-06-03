@@ -1,14 +1,14 @@
 import React from "react";
 import { Input } from "../../../components/ui/input";
-import { MessageCircleMore, Bell } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { PostForm } from "~/feature/posts";
 import Image from "next/image";
+import { Icon } from "@iconify/react";
 
 export function Header() {
   return (
-    <nav className="flex gap-3 items-center justify-between ">
-      <div className="flex gap-3 items-center flex-grow">
+    <header className=" px-4 py-2 h-14 border-b flex gap-3 items-center justify-between ">
+      <div className="flex gap-3 items-center ">
         <Image
           src="/reddit.svg"
           alt="Italian Trulli"
@@ -16,25 +16,27 @@ export function Header() {
           width={32}
           height={32}
         />
-        <div className="flex-grow flex justify-center">
-          <Input placeholder="Search Reddit" className="max-w-md bg-gray-100" />
-        </div>
       </div>
-
-      <div className="flex gap-3 items-center">
-        <div className="hover:bg-slate-200  rounded-full">
-          <MessageCircleMore />
+      <div className="flex flex-1  justify-center items-c">
+        <Input
+          placeholder="Search Reddit"
+          className="max-w-xl ml-48 bg-slate-200/65 hover:bg-slate-200 rounded-full"
+        />
+      </div>
+      <nav className="flex gap-3 items-center">
+        <div className="hover:bg-slate-200  rounded-full p-2">
+          <Icon icon="uiw:message" className="h-5 w-5" />
         </div>
         <PostForm />
 
-        <div className="hover:bg-slate-200 rounded-full">
-          <Bell />
+        <div className="hover:bg-slate-200 rounded-full p-2">
+          <Icon icon="uiw:bell" className="h-5 w-5" />
         </div>
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>AS</AvatarFallback>
         </Avatar>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

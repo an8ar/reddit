@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Image, Plus, X } from "lucide-react";
+import { Icon } from "@iconify/react";
 import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import {
@@ -11,11 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "~/components/ui/carousel";
-import {
-  FormProvider,
-  RHFTextArea,
-  RHFTextField,
-} from "~/components/hook-form";
+import { FormProvider, RHFTextArea } from "~/components/hook-form";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Post } from "../types";
@@ -147,7 +143,7 @@ const UploadPhoto = ({ handleFileChange }: UploadPhotoProps) => {
         htmlFor="inputPhoto"
         className="inset-0  px-2 py-3 rounded-full hover:cursor-pointer flex items-center gap-2 bg-stone-400 text-white"
       >
-        <Image size={20} color="white" />
+        <Icon icon="carbon:image" />
         <span>Add</span>
       </Label>
       <Input
@@ -170,7 +166,7 @@ const FileUploadArea = ({ handleFileChange }: UploadPhotoProps) => {
         htmlFor="inputImage"
         className="absolute inset-0 flex gap-4 items-center justify-center"
       >
-        <Plus size={20} />
+        <Icon icon="ph:plus-thin" />
         <span className="text-lg">Add photo</span>
       </Label>
       <Input

@@ -1,7 +1,6 @@
 "use client";
 
-import { Plus } from "lucide-react";
-
+import { Icon } from "@iconify/react";
 import { Button } from "~/components/ui/button";
 import {
   Dialog,
@@ -29,7 +28,8 @@ export function PostForm() {
           variant={"link"}
           className="hover:bg-slate-200 rounded-full flex gap-2 items-center"
         >
-          <Plus /> Create
+          <Icon icon="teenyicons:add-outline" className="h-5 w-5" />{" "}
+          <span>Create </span>
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl min-h-96">
