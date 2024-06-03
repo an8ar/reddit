@@ -1,6 +1,6 @@
-import React from 'react';
-import { Post as IPost } from '../types';
-
+import React from "react";
+import { Post as IPost } from "../types";
+import Image from "next/image";
 interface PostProps extends IPost {}
 
 export function Post({ title, imageUrls, text, linkUrl }: PostProps) {
@@ -11,25 +11,28 @@ export function Post({ title, imageUrls, text, linkUrl }: PostProps) {
         <div className="text-gray-400">7 hr. ago</div>
       </div>
       <div className="text-xl font-semibold">{title}</div>
-      {imageUrls && <Image src={imageUrls[0]} />}
-      {text && <Text text={text} />}
-      {linkUrl && <Link url={linkUrl} />}
+
+      {imageUrls && (
+        <>
+          <Image
+            src={imageUrls[0]}
+            className=" rounded-lg object-contain bg-black"
+            alt={title}
+            width={100}
+            height={100}
+          />
+        </>
+      )}
+      {text && <p className="text-sm text-gray-600">{text}</p>}
+      {linkUrl && (
+        <a
+          href={linkUrl}
+          target="_blank"
+          className="text-blue-700 visited:text-violet-500"
+        >
+          https://www.w3schools.com
+        </a>
+      )}
     </div>
   );
-}
-
-function Image({ src }: { src: string }) {
-  return <img src={src} className=" rounded-lg object-contain bg-black" />;
-}
-
-function Link({ url }: { url: string }) {
-  return (
-    <a href={url} target="_blank" className="text-blue-700 visited:text-violet-500">
-      https://www.w3schools.com
-    </a>
-  );
-}
-
-function Text({ text }: { text: string }) {
-  return <p className="text-sm text-gray-600">{text}</p>;
 }
