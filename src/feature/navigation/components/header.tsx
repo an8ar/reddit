@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "../../../components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { PostForm } from "~/feature/posts";
+import { PostFormDialog } from "~/feature/posts";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 
@@ -27,7 +27,7 @@ export function Header() {
         <div className="hover:bg-slate-200  rounded-full p-2">
           <Icon icon="uiw:message" className="h-5 w-5" />
         </div>
-        <PostForm />
+        <PostFormDialog />
 
         <div className="hover:bg-slate-200 rounded-full p-2">
           <Icon icon="uiw:bell" className="h-5 w-5" />

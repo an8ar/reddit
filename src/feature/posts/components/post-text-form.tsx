@@ -46,7 +46,7 @@ export function PostTextForm({ closeModal }: Props) {
 
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <section className="flex flex-col gap-2">
+      <section className="flex flex-col gap-2 mt-2">
         <div className="flex flex-col gap-2">
           <RHFTextArea
             name="title"
