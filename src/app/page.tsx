@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { SideBar } from "~/feature/navigation";
 import { PostList } from "~/feature/posts";
 export default function Home() {
   return (

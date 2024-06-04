@@ -7,8 +7,8 @@ export function Post({ title, imageUrls, text, linkUrl }: Props) {
   return (
     <div className="flex flex-col gap-2 hover:bg-slate-100 rounded-lg px-4 py-2">
       <div className="flex gap-2 text-xs">
-        <div className="font-semibold">an8ar</div>
-        <div className="text-gray-400">7 hr. ago</div>
+        <span className="font-semibold">an8ar</span>
+        <span className="text-gray-400">7 hr. ago</span>
       </div>
       <div className="text-xl font-semibold">{title}</div>
 
