@@ -10,3 +10,4 @@ export interface Post {
 export interface PostsState {
   posts: Post[];
 }
+export type FormType = "text" | "image";
