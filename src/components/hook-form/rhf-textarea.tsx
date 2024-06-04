@@ -31,7 +31,7 @@ export function RHFTextArea({
   maxLength,
 }: Props) {
   const { control, watch } = useFormContext();
-  const charCount = watch(name).length;
+  const charCount = watch(name)?.length;
   return (
     <FormField
       control={control}
