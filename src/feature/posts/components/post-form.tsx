@@ -76,9 +76,13 @@ export function PostForm({ closeModal, type }: Props) {
     setPhotos(photos.filter((_, idx) => idx !== index));
   };
 
-  const onSubmit = async ({ imageUrls, title }: FormValuesProps) => {
+  const onSubmit = async ({ imageUrls, title, text }: FormValuesProps) => {
     try {
-      dispatch(addPost("image", imageUrls || [], title));
+      if (type === "image") {
+        dispatch(addPost("image", imageUrls || [], title));
+      } else {
+        dispatch(addPost("text", text || "", title));
+      }
       closeModal();
     } catch (error) {
       console.error("Failed to submit application:", error);
