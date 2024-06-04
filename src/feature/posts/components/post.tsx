@@ -1,14 +1,19 @@
 import React from "react";
 import { Post as IPost } from "../types";
 import Image from "next/image";
+import { Interactions } from "~/feature/post-interactions";
+import ReactTimeAgo from "react-time-ago";
+
 interface Props extends IPost {}
 
-export function Post({ title, imageUrls, text, linkUrl }: Props) {
+export function Post({ title, imageUrls, text, linkUrl, createdAt }: Props) {
   return (
     <div className="flex flex-col gap-2 hover:bg-slate-100 rounded-lg px-4 py-2">
       <div className="flex gap-2 text-xs">
         <span className="font-semibold">an8ar</span>
-        <span className="text-gray-400">7 hr. ago</span>
+        <span className="text-gray-400">
+          <ReactTimeAgo date={new Date(createdAt)} locale="en-US" />
+        </span>
       </div>
       <div className="text-xl font-semibold">{title}</div>
 
@@ -33,6 +38,7 @@ export function Post({ title, imageUrls, text, linkUrl }: Props) {
           https://www.w3schools.com
         </a>
       )}
+      <Interactions />
     </div>
   );
 }

@@ -2,6 +2,11 @@
 import React from "react";
 import { useAppSelector } from "~/store/hooks";
 import { Post } from "./post";
+import TimeAgo from "javascript-time-ago";
+
+import en from "javascript-time-ago/locale/en";
+TimeAgo.addDefaultLocale(en);
+
 export function PostList() {
   const posts = useAppSelector((state) => state.postsSlice.posts);
 
