@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Icon } from "@iconify/react";
-import { Label } from "~/components/ui/label";
-import { Input } from "~/components/ui/input";
 import {
   Carousel,
   CarouselContent,
@@ -11,7 +8,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "~/components/ui/carousel";
-import { FormProvider, RHFTextArea } from "~/components/hook-form";
+import {
+  FormProvider,
+  RHFTextArea,
+  RHFTextField,
+} from "~/components/hook-form";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormType, Post } from "../types";
@@ -39,7 +40,7 @@ interface Props {
 export function PostForm({ closeModal, type }: Props) {
   const [photos, setPhotos] = useState<string[]>([]);
   const dispatch = useAppDispatch();
-
+  console.log("photo count:", photos.length);
   const defaultValues = {
     title: "",
     imageUrls: [],
@@ -92,49 +93,42 @@ export function PostForm({ closeModal, type }: Props) {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <section className="flex flex-col gap-2 mt-2">
-        <RHFTextArea
-          name="title"
-          placeholder="Title"
-          className="min-h-10"
-          maxLength={300}
-        />
-        {type == "image" ? (
-          <>
-            {photos.length <= 0 ? (
-              <FileUploadArea handleFileChange={handleFileChange} />
-            ) : (
-              <div className="backdrop-blur-2xl bg-slate-200 rounded-2xl overflow-hidden h-100 group">
-                <Carousel className="w-full flex justify-between items-center gap-2 px-8 relative">
-                  <div className="absolute top-2 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <UploadFile handleFileChange={handleFileChange} />
-                  </div>
-                  <div>
-                    <CarouselPrevious />
-                  </div>
-                  <CarouselContent>
-                    {photos.map((photo, index) => (
-                      <CarouselItem key={index}>
-                        <div className=" max-h-72 flex justify-center items-center">
-                          <Image
-                            className="object-scale-down"
-                            src={photo}
-                            alt="Sheraton Hotel"
-                            width={200}
-                            height={200}
-                          />
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <div>
-                    <CarouselNext />
-                  </div>
-                </Carousel>
-              </div>
-            )}
-          </>
-        ) : (
+        <RHFTextArea name="title" placeholder="Title" maxLength={300} />
+        {type === "text" && (
           <RHFTextArea name="text" placeholder="Body" className="h-40" />
+        )}
+        {type === "image" && photos.length <= 0 && (
+          <FileUploadArea handleFileChange={handleFileChange} />
+        )}
+        {type === "image" && photos.length > 0 && (
+          <div className="backdrop-blur-2xl bg-slate-200 rounded-2xl overflow-hidden h-100 group">
+            <Carousel className="w-full flex justify-between items-center gap-2 px-8 relative">
+              <div className="absolute top-2 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <UploadFile handleFileChange={handleFileChange} />
+              </div>
+              <div>
+                <CarouselPrevious />
+              </div>
+              <CarouselContent>
+                {photos.map((photo, index) => (
+                  <CarouselItem key={index}>
+                    <div className=" max-h-72 flex justify-center items-center">
+                      <Image
+                        className="object-scale-down"
+                        src={photo}
+                        alt="Sheraton Hotel"
+                        width={200}
+                        height={200}
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div>
+                <CarouselNext />
+              </div>
+            </Carousel>
+          </div>
         )}
 
         <div className="flex gap-5 justify-end">
