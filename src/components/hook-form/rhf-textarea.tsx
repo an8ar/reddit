@@ -38,7 +38,7 @@ export function RHFTextArea({
       name={name}
       defaultValue={defaultValue}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className="relative">
           {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
             <Textarea
@@ -53,7 +53,7 @@ export function RHFTextArea({
               {charCount}/{maxLength}
             </div>
           )}
-          <FormMessage />
+          <FormMessage className="absolute bottom-0 left-2" />
         </FormItem>
       )}
     />
