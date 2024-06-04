@@ -10,10 +10,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
-
+import { FormType } from "../types";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { PostTextForm } from "./post-text-form";
 import { useState } from "react";
+import { PostForm } from "./post-form";
 
 export function PostFormDialog() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -45,19 +46,17 @@ interface FormTabProps {
   closeModal: () => void;
 }
 function FormsTab({ closeModal }: FormTabProps) {
+  const [tabValue, setTabValue] = useState<FormType>("text");
+  const handleTabChange = (value: string) => {
+    setTabValue(value as FormType);
+  };
   return (
-    <Tabs
-      defaultValue="text"
-      className=""
-      onValueChange={(w) => {
-        console.log(w);
-      }}
-    >
+    <Tabs defaultValue="text" className="" onValueChange={handleTabChange}>
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="text">Text</TabsTrigger>
         <TabsTrigger value="image">Image</TabsTrigger>
       </TabsList>
-      <PostTextForm closeModal={closeModal} />
+      <PostForm closeModal={closeModal} type={tabValue} />
     </Tabs>
   );
 }
