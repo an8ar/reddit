@@ -1,12 +1,33 @@
-import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit';
-import { Post, PostsState } from './types';
+import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit";
+import { Post, PostsState } from "./types";
 
 const initialState: PostsState = {
-  posts: [],
+  posts: [
+    {
+      id: "1",
+      title: "ansar",
+      text: "serikbayev",
+      createdAt: new Date("2024-03-22").toISOString(),
+    },
+    {
+      id: "2",
+      title: "cristiano",
+      text: "ronaldo",
+      createdAt: new Date("2024-02-15").toISOString(),
+    },
+    {
+      id: "3",
+      title: "ansar",
+      imageUrls: [
+        "https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg",
+      ],
+      createdAt: new Date("2024-05-29").toISOString(),
+    },
+  ],
 };
 
 export const postsSlice = createSlice({
-  name: 'postsSlice',
+  name: "postsSlice",
   initialState,
   reducers: {
     addPost: {
@@ -14,33 +35,35 @@ export const postsSlice = createSlice({
         state.posts.push(action.payload);
       },
       prepare: (
-        postType: 'text' | 'image' | 'link',
+        postType: "text" | "image" | "link",
         content: string | string[], // Change content to accept an array for image URLs
-        title: string,
+        title: string
       ) => {
         const id = nanoid();
         const createdAt = new Date().toISOString();
         let post: Post;
 
         switch (postType) {
-          case 'text':
+          case "text":
             post = { id, createdAt, title, text: content as string };
             break;
-          case 'image':
+          case "image":
             post = { id, createdAt, title, imageUrls: content as string[] }; // Cast to string[]
             break;
-          case 'link':
+          case "link":
             post = { id, createdAt, title, linkUrl: content as string };
             break;
           default:
-            throw new Error('Invalid post type');
+            throw new Error("Invalid post type");
         }
 
         return { payload: post };
       },
     },
     deletePost(state, action: PayloadAction<{ postId: string }>) {
-      state.posts = state.posts.filter((post) => post.id !== action.payload.postId);
+      state.posts = state.posts.filter(
+        (post) => post.id !== action.payload.postId
+      );
     },
   },
 });
