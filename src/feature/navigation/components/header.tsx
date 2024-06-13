@@ -30,6 +30,7 @@ export function Header() {
           placeholder="Search Reddit"
           className="max-w-xl ml-48 bg-slate-200/65 hover:bg-slate-200 rounded-full"
         />
+        <span>Here will be kinda drop down </span>
       </div>
       <nav className="flex gap-3 items-center">
         <div className="hover:bg-slate-200  rounded-full p-2">
