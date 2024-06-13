@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice, nanoid } from "@reduxjs/toolkit";
 import { Post, PostsState } from "./types";
-
+import dayjs from "dayjs";
 const initialState: PostsState = {
   posts: [
     {
@@ -65,8 +65,46 @@ export const postsSlice = createSlice({
         (post) => post.id !== action.payload.postId
       );
     },
+    sortByName(state, action: PayloadAction<{ asc: boolean }>) {
+      if (action.payload.asc === true) {
+        state.posts = state.posts.sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
+      } else {
+        state.posts = state.posts.sort((a, b) =>
+          b.title.localeCompare(a.title)
+        );
+      }
+    },
+    sortByDate(state, action: PayloadAction<{ dateAsc: boolean }>) {
+      if (action.payload.dateAsc === true) {
+        state.posts = state.posts.sort((a, b) => {
+          if (dayjs(a.createdAt).isBefore(dayjs(b.createdAt))) {
+            return 1;
+          }
+          if (dayjs(a.createdAt).isAfter(dayjs(b.createdAt))) {
+            return -1;
+          }
+          return 0;
+        });
+      } else {
+        state.posts = state.posts.sort((a, b) => {
+          if (dayjs(a.createdAt).isBefore(dayjs(b.createdAt))) {
+            return -1;
+          }
+          if (dayjs(a.createdAt).isAfter(dayjs(b.createdAt))) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+    },
+    resetState() {
+      return initialState;
+    },
   },
 });
 
-export const { addPost } = postsSlice.actions;
+export const { addPost, sortByName, sortByDate, resetState } =
+  postsSlice.actions;
 export default postsSlice.reducer;
