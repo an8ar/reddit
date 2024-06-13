@@ -42,10 +42,10 @@ export function PostFormDialog() {
   );
 }
 interface FormTabProps {
-  closeModal: () => void;
+  closeModal?: () => void;
 }
 
-function FormsTab({ closeModal }: FormTabProps) {
+export function FormsTab({ closeModal }: FormTabProps) {
   const [tabValue, setTabValue] = useState<FormType>("text");
 
   const handleTabChange = (value: string) => {

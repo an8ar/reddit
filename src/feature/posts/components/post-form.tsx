@@ -33,14 +33,13 @@ const CreatePostSchema = Yup.object().shape({
 });
 
 interface Props {
-  closeModal: () => void;
+  closeModal?: () => void;
   type: FormType;
 }
 
 export function PostForm({ closeModal, type }: Props) {
   const [photos, setPhotos] = useState<string[]>([]);
   const dispatch = useAppDispatch();
-  console.log("photo count:", photos.length);
   const defaultValues = {
     title: "",
     imageUrls: [],
@@ -84,7 +83,7 @@ export function PostForm({ closeModal, type }: Props) {
       } else {
         dispatch(addPost("text", text || "", title));
       }
-      closeModal();
+      if (closeModal) closeModal();
     } catch (error) {
       console.error("Failed to submit application:", error);
     }
