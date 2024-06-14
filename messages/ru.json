@@ -1,5 +1,22 @@
 {
-  "Index": {
+  "Home": {
     "title": "Привет, мир!"
+  },
+  "Header": {
+    "name": ""
+  },
+  "SideBar": {
+    "home": "Главная",
+    "popular": "Популярное",
+    "all": "Все",
+    "Accordions": {
+      "customFeeds": "Настраиваемые ленты",
+      "communities": "Сообщества",
+      "resources": "Ресурсы"
+    }
+  },
+  "Sort": {
+    "date": "по дате",
+    "name": "по имени"
   }
 }

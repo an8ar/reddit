@@ -1,5 +1,22 @@
 {
-  "Index": {
+  "Home": {
     "title": "Hello world!"
+  },
+  "Header": {
+    "name": ""
+  },
+  "SideBar": {
+    "home": "Home",
+    "popular": "Popular",
+    "all": "All",
+    "Accordions": {
+      "customFeeds": "Custom Feeds",
+      "communities": "Communities",
+      "resources": "Resources"
+    }
+  },
+  "Sort": {
+    "date": "by date",
+    "name": "by name"
   }
 }
