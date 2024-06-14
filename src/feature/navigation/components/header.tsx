@@ -6,8 +6,11 @@ import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
 import { useRouter } from 'next/navigation';
+<<<<<<< HEAD
 import { SelectLanguage } from '~/components/select-language';
 import Link from 'next/link';
+=======
+>>>>>>> 20b90d0 (add: internationalization text)
 
 interface Props {
   locale: string;
