@@ -1,5 +1,7 @@
-import React from "react";
-import { FormsTab } from "~/feature/posts";
+import React from 'react';
+
+import { FormsTab } from '~/feature/posts';
+
 export default function Page() {
   return (
     <main className=" w-full">

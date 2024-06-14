@@ -1,13 +1,15 @@
-import React from "react";
+import React from 'react';
+
+import Image from 'next/image';
+
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "~/components/ui/carousel";
-import { UploadButton } from "~/components/upload-button";
-import Image from "next/image";
+} from '~/components/ui/carousel';
+import { UploadButton } from '~/components/upload-button';
 
 interface Props {
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
