@@ -8,8 +8,11 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '~/components/ui/button';
 import { resetState, sortByDate } from '~/feature/posts/posts-slice';
 import { useAppDispatch } from '~/store/hooks';
+import { useTranslations } from 'next-intl';
 
 export function SortByDate() {
+  const t = useTranslations('Sort');
+
   const dispatch = useAppDispatch();
 
   const router = useRouter();
@@ -59,7 +62,7 @@ export function SortByDate() {
 
   return (
     <div className="flex items-center gap-2 border px-2 py-1">
-      <span>Date</span>
+      <span>{t('date')}</span>
       <Button
         variant="outline"
         size="icon"

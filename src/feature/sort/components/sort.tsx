@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { SortByDate } from "./sort-by-date";
-import { SortByName } from "./sort-by-post-name";
+import { SortByDate } from './sort-by-date';
+import { SortByName } from './sort-by-post-name';
 
 export function Sort() {
   return (

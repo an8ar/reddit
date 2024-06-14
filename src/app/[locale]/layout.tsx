@@ -30,7 +30,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <ReduxProviders>
           <NextIntlClientProvider messages={messages}>
-            <Header />
+            <Header locale={locale} />
             <div className="flex gap-3 w-8/12">
               <SideBar />
 
