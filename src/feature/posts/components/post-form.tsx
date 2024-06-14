@@ -21,8 +21,9 @@ import { Button } from "~/components/ui/button";
 import { useAppDispatch } from "~/store/hooks";
 import { addPost } from "../posts-slice";
 import Image from "next/image";
-import { UploadFile } from "~/components/upload-file";
+import { UploadButton } from "~/components/upload-button";
 import { FileUploadArea } from "~/components/upload-file-area";
+import { PostPhotoCarousel } from "./post-photo-carousel";
 
 type FormValuesProps = Omit<Post, "id" | "createdAt">;
 
@@ -100,34 +101,10 @@ export function PostForm({ closeModal, type }: Props) {
           <FileUploadArea handleFileChange={handleFileChange} />
         )}
         {type === "image" && photos.length > 0 && (
-          <div className="backdrop-blur-2xl bg-slate-200 rounded-2xl overflow-hidden h-100 group">
-            <Carousel className="w-full flex justify-between items-center gap-2 px-8 relative">
-              <div className="absolute top-2 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <UploadFile handleFileChange={handleFileChange} />
-              </div>
-              <div>
-                <CarouselPrevious />
-              </div>
-              <CarouselContent>
-                {photos.map((photo, index) => (
-                  <CarouselItem key={index}>
-                    <div className=" max-h-72 flex justify-center items-center">
-                      <Image
-                        className="object-scale-down"
-                        src={photo}
-                        alt="Sheraton Hotel"
-                        width={200}
-                        height={200}
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div>
-                <CarouselNext />
-              </div>
-            </Carousel>
-          </div>
+          <PostPhotoCarousel
+            handleFileChange={handleFileChange}
+            photos={photos}
+          />
         )}
 
         <div className="flex gap-5 justify-end">

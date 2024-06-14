@@ -6,9 +6,9 @@ interface Props {
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const UploadFile = ({ handleFileChange }: Props) => {
+export const UploadButton = ({ handleFileChange }: Props) => {
   return (
-    <>
+    <div className="absolute top-2 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
       <Label
         htmlFor="inputPhoto"
         className="inset-0  px-2 py-3 rounded-full hover:cursor-pointer flex items-center gap-2 bg-stone-400 text-white"
@@ -25,6 +25,6 @@ export const UploadFile = ({ handleFileChange }: Props) => {
         hidden
         className="file-selector-button-none hidden"
       />
-    </>
+    </div>
   );
 };
