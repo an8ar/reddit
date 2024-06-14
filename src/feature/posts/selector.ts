@@ -34,39 +34,16 @@ export const selectSortedPosts = createSelector(
   (posts, searchParams) => {
     let filteredPosts = [...posts];
 
-    if (searchParams.sortBy === 'name') {
-      if (searchParams.order === 'asc') {
-        filteredPosts = filteredPosts.sort((a, b) => a.title.localeCompare(b.title));
-      }
-      if (searchParams.order === 'desc') {
-        filteredPosts = filteredPosts.sort((a, b) => b.title.localeCompare(a.title));
+    const sortBy = searchParams.sortBy as keyof typeof sortingHandlers;
+    const order = searchParams.order as 'asc' | 'desc';
+
+    if (sortBy && order) {
+      const sortHandler = sortingHandlers[sortBy];
+      if (sortHandler) {
+        filteredPosts = sortHandler(filteredPosts, order);
       }
     }
 
-    if (searchParams.sortBy === 'date') {
-      if (searchParams.order === 'asc') {
-        filteredPosts = filteredPosts.sort((a, b) => {
-          if (dayjs(a.createdAt).isBefore(dayjs(b.createdAt))) {
-            return 1;
-          }
-          if (dayjs(a.createdAt).isAfter(dayjs(b.createdAt))) {
-            return -1;
-          }
-          return 0;
-        });
-      }
-      if (searchParams.order === 'desc') {
-        filteredPosts = filteredPosts.sort((a, b) => {
-          if (dayjs(a.createdAt).isBefore(dayjs(b.createdAt))) {
-            return -1;
-          }
-          if (dayjs(a.createdAt).isAfter(dayjs(b.createdAt))) {
-            return 1;
-          }
-          return 0;
-        });
-      }
-    }
     return filteredPosts;
   },
 );
