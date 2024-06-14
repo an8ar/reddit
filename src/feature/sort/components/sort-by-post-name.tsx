@@ -37,7 +37,7 @@ export function SortByName() {
         onClick={handleClick}
       >
         <span className="flex items-center justify-center transition-transform duration-500 hover:rotate-360">
-          <Icon icon="system-uicons:sort" className="h-5 w-5" />
+          <Icon icon="system-uicons:sort" className="size-5" />
         </span>
       </Button>
     </div>
