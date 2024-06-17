@@ -12,7 +12,7 @@ const sortByName = (posts: Post[], order: 'asc' | 'desc') => {
 
 const sortByDate = (posts: Post[], order: 'asc' | 'desc') => {
   return posts.sort((a, b) => {
-    const comparison = dayjs(a.createdAt).isBefore(dayjs(b.createdAt)) ? -1 : 1;
+    const comparison = dayjs(a.createdAt).isBefore(dayjs(b.createdAt)) ? 1 : -1;
     return order === 'asc' ? comparison : -comparison;
   });
 };
