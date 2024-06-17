@@ -7,6 +7,7 @@ import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { SelectLanguage } from '~/components/select-language';
+import Link from 'next/link';
 
 interface Props {
   locale: string;
@@ -20,9 +21,9 @@ export function Header({ locale }: Props) {
 
   return (
     <header className=" px-4 py-2 h-14 border-b flex gap-3 items-center justify-between ">
-      <div className="flex gap-3 items-center ">
+      <Link href={'/'} className="flex gap-3 items-center ">
         <Image src="/reddit.svg" alt="Italian Trulli" className="max-h-10" width={32} height={32} />
-      </div>
+      </Link>
       <div className="flex flex-1  justify-center items-c">
         <Input
           placeholder="Search Reddit"
