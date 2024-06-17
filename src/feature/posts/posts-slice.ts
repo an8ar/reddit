@@ -6,6 +6,7 @@ import { initialPosts } from './constants';
 const initialState: PostsState = {
   posts: initialPosts,
 };
+
 export const postsSlice = createSlice({
   name: 'postsSlice',
   initialState,
