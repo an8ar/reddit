@@ -15,6 +15,7 @@ import { addPost } from '../posts-slice';
 import { FormType, Post } from '../types';
 
 import { PostPhotoCarousel } from './post-photo-carousel';
+import { useTranslations } from 'next-intl';
 
 type FormValuesProps = Omit<Post, 'id' | 'createdAt'>;
 
@@ -31,20 +32,26 @@ interface Props {
 
 export function PostForm({ closeModal, type }: Props) {
   const [photos, setPhotos] = useState<string[]>([]);
+
   const dispatch = useAppDispatch();
+
   const defaultValues = {
     title: '',
     imageUrls: [],
   };
 
+  const t = useTranslations('PostForm');
+
   const methods = useForm<FormValuesProps>({
     resolver: yupResolver(CreatePostSchema),
     defaultValues,
   });
+
   const { handleSubmit, setValue, getValues } = methods;
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
+
     if (!files) return;
 
     const newPhotos = await Promise.all(
@@ -84,8 +91,8 @@ export function PostForm({ closeModal, type }: Props) {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <section className="flex flex-col gap-2 mt-2">
-        <RHFTextArea name="title" placeholder="Title" maxLength={300} />
-        {type === 'text' && <RHFTextArea name="text" placeholder="Body" className="h-40" />}
+        <RHFTextArea name="title" placeholder={t('title')} maxLength={300} />
+        {type === 'text' && <RHFTextArea name="text" placeholder={t('body')} className="h-40" />}
         {type === 'image' && photos.length <= 0 && (
           <FileUploadArea handleFileChange={handleFileChange} />
         )}
@@ -95,10 +102,10 @@ export function PostForm({ closeModal, type }: Props) {
 
         <div className="flex gap-5 justify-end">
           <Button className="rounded-full bg-blue-800" type="button">
-            Save draft
+            {t('Submit.draft')}
           </Button>
           <Button type="submit" className="rounded-full bg-blue-800">
-            Post
+            {t('Submit.save')}
           </Button>
         </div>
       </section>

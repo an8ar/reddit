@@ -22,5 +22,19 @@
   "LocaleSwitcher": {
     "locale": "{locale, select, ru {Russian} en {English} other {Unknown}}",
     "title": "Language"
+  },
+  "PostForm": {
+    "name": "Create Post",
+    "Tab": {
+      "text": "Text",
+      "image": "Photo"
+    },
+    "title": "Title",
+    "body": "Body",
+    "photo": "Add Photo",
+    "Submit": {
+      "draft": "Save draft",
+      "save": "Post"
+    }
   }
 }

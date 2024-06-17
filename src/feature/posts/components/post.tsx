@@ -22,15 +22,13 @@ export function Post({ title, imageUrls, text, linkUrl, createdAt }: Props) {
       <div className="text-xl font-semibold">{title}</div>
 
       {imageUrls && (
-        <>
-          <Image
-            src={imageUrls[0]}
-            className=" rounded-lg object-contain bg-black w-full"
-            alt={title}
-            width={600}
-            height={600}
-          />
-        </>
+        <Image
+          src={imageUrls[0]}
+          className=" rounded-lg object-contain bg-black w-full"
+          alt={title}
+          width={600}
+          height={600}
+        />
       )}
       {text && <p className="text-sm text-gray-600">{text}</p>}
       {linkUrl && (
