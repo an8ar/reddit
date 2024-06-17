@@ -243,27 +243,16 @@ export const postsSlice = createSlice({
       }
     },
     sortByDate(state, action: PayloadAction<{ dateAsc: boolean }>) {
-      if (action.payload.dateAsc === true) {
-        state.posts = state.posts.sort((a, b) => {
-          if (dayjs(a.createdAt).isBefore(dayjs(b.createdAt))) {
-            return 1;
-          }
-          if (dayjs(a.createdAt).isAfter(dayjs(b.createdAt))) {
-            return -1;
-          }
-          return 0;
-        });
-      } else {
-        state.posts = state.posts.sort((a, b) => {
-          if (dayjs(a.createdAt).isBefore(dayjs(b.createdAt))) {
-            return -1;
-          }
-          if (dayjs(a.createdAt).isAfter(dayjs(b.createdAt))) {
-            return 1;
-          }
-          return 0;
-        });
-      }
+      const { dateAsc } = action.payload;
+      state.posts = state.posts.sort((a, b) => {
+        if (dayjs(a.createdAt).isBefore(dayjs(b.createdAt))) {
+          return dateAsc ? -1 : 1;
+        }
+        if (dayjs(a.createdAt).isAfter(dayjs(b.createdAt))) {
+          return dateAsc ? 1 : -1;
+        }
+        return 0;
+      });
     },
     resetState() {
       return initialState;
