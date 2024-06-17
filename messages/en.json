@@ -18,5 +18,9 @@
   "Sort": {
     "date": "by date",
     "name": "by name"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, ru {Russian} en {English} other {Unknown}}",
+    "title": "Language"
   }
 }

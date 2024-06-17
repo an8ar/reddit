@@ -18,5 +18,9 @@
   "Sort": {
     "date": "по дате",
     "name": "по имени"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, en {Английский} ru {Русский} other {Не известный}}",
+    "title": "Язык"
   }
 }
