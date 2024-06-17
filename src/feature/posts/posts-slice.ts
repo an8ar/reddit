@@ -235,30 +235,8 @@ export const postsSlice = createSlice({
     deletePost(state, action: PayloadAction<{ postId: string }>) {
       state.posts = state.posts.filter((post) => post.id !== action.payload.postId);
     },
-    sortByName(state, action: PayloadAction<{ asc: boolean }>) {
-      if (action.payload.asc === true) {
-        state.posts = state.posts.sort((a, b) => a.title.localeCompare(b.title));
-      } else {
-        state.posts = state.posts.sort((a, b) => b.title.localeCompare(a.title));
-      }
-    },
-    sortByDate(state, action: PayloadAction<{ dateAsc: boolean }>) {
-      const { dateAsc } = action.payload;
-      state.posts = state.posts.sort((a, b) => {
-        if (dayjs(a.createdAt).isBefore(dayjs(b.createdAt))) {
-          return dateAsc ? -1 : 1;
-        }
-        if (dayjs(a.createdAt).isAfter(dayjs(b.createdAt))) {
-          return dateAsc ? 1 : -1;
-        }
-        return 0;
-      });
-    },
-    resetState() {
-      return initialState;
-    },
   },
 });
 
-export const { addPost, sortByName, sortByDate, resetState } = postsSlice.actions;
+export const { addPost } = postsSlice.actions;
 export default postsSlice.reducer;

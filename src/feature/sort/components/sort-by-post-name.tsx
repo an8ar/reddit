@@ -2,15 +2,11 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
-import { useAppDispatch } from '~/store/hooks';
-import { resetState, sortByName } from '~/feature/posts/posts-slice';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 export function SortByName() {
   const t = useTranslations('Sort');
-
-  const dispatch = useAppDispatch();
 
   const router = useRouter();
 
@@ -26,15 +22,12 @@ export function SortByName() {
     const currentOrder = params.get('order');
 
     if (currentSort === 'name' && currentOrder === 'asc') {
-      dispatch(sortByName({ asc: false }));
       params.set('sortBy', 'name');
       params.set('order', 'desc');
     } else if (currentSort === 'name' && currentOrder === 'desc') {
-      dispatch(resetState());
       params.delete('sortBy');
       params.delete('order');
     } else {
-      dispatch(sortByName({ asc: true }));
       params.set('sortBy', 'name');
       params.set('order', 'asc');
     }

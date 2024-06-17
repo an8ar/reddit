@@ -6,14 +6,10 @@ import { Icon } from '@iconify/react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { Button } from '~/components/ui/button';
-import { resetState, sortByDate } from '~/feature/posts/posts-slice';
-import { useAppDispatch } from '~/store/hooks';
 import { useTranslations } from 'next-intl';
 
 export function SortByDate() {
   const t = useTranslations('Sort');
-
-  const dispatch = useAppDispatch();
 
   const router = useRouter();
 
@@ -29,15 +25,12 @@ export function SortByDate() {
     const currentOrder = params.get('order');
 
     if (currentSort === 'date' && currentOrder === 'asc') {
-      dispatch(sortByDate({ dateAsc: false }));
       params.set('sortBy', 'date');
       params.set('order', 'desc');
     } else if (currentSort === 'date' && currentOrder === 'desc') {
-      dispatch(resetState());
       params.delete('sortBy');
       params.delete('order');
     } else {
-      dispatch(sortByDate({ dateAsc: true }));
       params.set('sortBy', 'date');
       params.set('order', 'asc');
     }
