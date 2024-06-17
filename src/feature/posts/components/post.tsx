@@ -25,10 +25,10 @@ export function Post({ title, imageUrls, text, linkUrl, createdAt }: Props) {
         <>
           <Image
             src={imageUrls[0]}
-            className=" rounded-lg object-contain bg-black"
+            className=" rounded-lg object-contain bg-black w-full"
             alt={title}
-            width={100}
-            height={100}
+            width={600}
+            height={600}
           />
         </>
       )}
