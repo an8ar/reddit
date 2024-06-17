@@ -29,7 +29,7 @@ export function SideBar() {
   );
 
   return (
-    <aside className="px-4 py-2 flex-none w-80 ">
+    <aside className="px-4 py-2 flex-none w-64 border-r ">
       <ul className="space-y-0">
         {feeds.map((feed) => (
           <li
