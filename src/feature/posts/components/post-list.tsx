@@ -1,23 +1,21 @@
-"use client";
-import React from "react";
-import { useAppSelector } from "~/store/hooks";
-import { Post } from "./post";
-import TimeAgo from "javascript-time-ago";
+'use client';
+import React from 'react';
+import { Post } from './post';
 
-import en from "javascript-time-ago/locale/en";
-import { useSelector } from "react-redux";
-import { selectSortedPosts } from "../selector";
-import { RootState } from "~/store";
+import { useSelector } from 'react-redux';
+import { selectSortedPosts } from '../selector';
+import { RootState } from '~/store';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+import ru from 'javascript-time-ago/locale/ru';
 TimeAgo.addDefaultLocale(en);
-
+TimeAgo.addLocale(ru);
 interface Props {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export function PostList({ searchParams }: Props) {
-  const posts = useSelector((state: RootState) =>
-    selectSortedPosts(state, searchParams)
-  );
+  const posts = useSelector((state: RootState) => selectSortedPosts(state, searchParams));
   return (
     <div>
       {posts.length > 0 ? (

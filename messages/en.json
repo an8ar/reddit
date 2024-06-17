@@ -1,0 +1,40 @@
+{
+  "Home": {
+    "title": "Hello world!"
+  },
+  "Header": {
+    "name": ""
+  },
+  "SideBar": {
+    "home": "Home",
+    "popular": "Popular",
+    "all": "All",
+    "Accordions": {
+      "customFeeds": "Custom Feeds",
+      "communities": "Communities",
+      "resources": "Resources"
+    }
+  },
+  "Sort": {
+    "date": "by date",
+    "name": "by name"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, ru {Russian} en {English} other {Unknown}}",
+    "title": "Language"
+  },
+  "PostForm": {
+    "name": "Create Post",
+    "Tab": {
+      "text": "Text",
+      "image": "Photo"
+    },
+    "title": "Title",
+    "body": "Body",
+    "photo": "Add Photo",
+    "Submit": {
+      "draft": "Save draft",
+      "save": "Post"
+    }
+  }
+}

@@ -1,5 +1,6 @@
-import { PostList } from "~/feature/posts";
-import { Sort } from "~/feature/sort";
+import { PostList } from '~/feature/posts';
+import { Sort } from '~/feature/sort';
+
 export default function Home({
   searchParams,
 }: {
@@ -7,7 +8,7 @@ export default function Home({
 }) {
   return (
     <main className="flex-1 flex flex-col gap-10">
-      <header>
+      <header className=" border-b py-2">
         <Sort />
       </header>
       <section className=" ">

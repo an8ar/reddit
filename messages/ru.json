@@ -1,0 +1,41 @@
+{
+  "Home": {
+    "title": "Привет, мир!"
+  },
+  "Header": {
+    "name": ""
+  },
+  "SideBar": {
+    "home": "Главная",
+    "popular": "Популярное",
+    "all": "Все",
+    "Accordions": {
+      "customFeeds": "Настраиваемые ленты",
+      "communities": "Сообщества",
+      "resources": "Ресурсы"
+    }
+  },
+  "Sort": {
+    "date": "по дате",
+    "name": "по имени"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, en {Английский} ru {Русский} other {Не известный}}",
+    "title": "Язык"
+  },
+  "PostForm": {
+    "name": "Добавить пост",
+
+    "Tab": {
+      "text": "Текст",
+      "image": "Фото"
+    },
+    "title": "Заголовок",
+    "body": "Тело",
+    "photo": "Добавить фото",
+    "Submit": {
+      "draft": "В черновик",
+      "save": "Добавить"
+    }
+  }
+}
