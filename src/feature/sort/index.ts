@@ -1,2 +1,1 @@
-export * from "./components/sort-by-post-name";
-export * from "./components/sort";
+export * from './components/sort';
