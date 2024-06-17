@@ -8,7 +8,7 @@ export default function Home({
 }) {
   return (
     <main className="flex-1 flex flex-col gap-10">
-      <header>
+      <header className=" border-b py-2">
         <Sort />
       </header>
       <section className=" ">
