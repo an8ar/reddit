@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { SelectLanguage } from '~/components/select-language';
 
 interface Props {
   locale: string;
@@ -44,6 +45,7 @@ export function Header({ locale }: Props) {
         <div className="hover:bg-slate-200 rounded-full p-2">
           <Icon icon="uiw:bell" className="h-5 w-5" />
         </div>
+        <SelectLanguage />
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>AS</AvatarFallback>
