@@ -55,7 +55,6 @@ export const initialPosts = [
     id: '9',
     title: 'Learn TypeScript',
     linkUrl: 'https://www.typescriptlang.org/',
-    text: 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.',
     createdAt: new Date('2024-03-18').toISOString(),
   },
   {
@@ -68,9 +67,7 @@ export const initialPosts = [
     id: '11',
     title: 'New York City',
     text: 'The city that never sleeps!',
-    imageUrls: [
-      'https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg',
-    ],
+
     createdAt: new Date('2024-05-25').toISOString(),
   },
   {
@@ -100,7 +97,6 @@ export const initialPosts = [
   {
     id: '16',
     title: 'Art in the Modern World',
-    text: 'How modern art is evolving with technology.',
     imageUrls: ['https://cdn.pixabay.com/photo/2023/10/21/11/46/sunset-8331285_640.jpg'],
     createdAt: new Date('2024-05-20').toISOString(),
   },
@@ -137,7 +133,6 @@ export const initialPosts = [
   {
     id: '22',
     title: 'Photography Tips',
-    text: 'Improve your photography skills with these tips.',
     imageUrls: [
       'https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg',
     ],
@@ -183,7 +178,6 @@ export const initialPosts = [
     id: '29',
     title: 'Gardening Tips',
     text: 'Grow your own garden with these tips.',
-    imageUrls: ['https://cdn.pixabay.com/photo/2023/10/21/11/46/sunset-8331285_640.jpg'],
     createdAt: new Date('2024-06-01').toISOString(),
   },
   {

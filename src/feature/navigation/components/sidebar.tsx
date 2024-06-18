@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl';
 
 export function SideBar() {
   const t = useTranslations('SideBar');
+
   const feeds = useMemo(
     () => [
       {
@@ -47,6 +48,7 @@ export function SideBar() {
           </AccordionTrigger>
           <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
         </AccordionItem>
+
         <AccordionItem value="item-2" className="px-2">
           <AccordionTrigger className=" text-gray-500">
             {t('Accordions.communities')}
@@ -55,6 +57,7 @@ export function SideBar() {
             Yes. It comes with default styles that matches the other components&apos; aesthetic.
           </AccordionContent>
         </AccordionItem>
+
         <AccordionItem value="item-3" className="px-2">
           <AccordionTrigger className=" text-gray-500">
             {t('Accordions.resources')}

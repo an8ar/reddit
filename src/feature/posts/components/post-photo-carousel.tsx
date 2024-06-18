@@ -37,6 +37,7 @@ export function PostPhotoCarousel({ handleFileChange, photos }: Props) {
             </CarouselItem>
           ))}
         </CarouselContent>
+
         <CarouselNext className="w-9 hover:bg-gray-300 transition duration-300 ease-in-out" />
       </Carousel>
     </div>
