@@ -35,7 +35,7 @@ export function Sort() {
   };
 
   return (
-    <section>
+    <article>
       <DropdownMenu>
         <DropdownMenuTrigger asChild className="ring-0">
           <Button
@@ -73,6 +73,6 @@ export function Sort() {
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-    </section>
+    </article>
   );
 }
