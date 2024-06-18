@@ -16,6 +16,7 @@ import { FormType, Post } from '../types';
 
 import { PostPhotoCarousel } from './post-photo-carousel';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 type FormValuesProps = Omit<Post, 'id' | 'createdAt'>;
 
@@ -32,6 +33,8 @@ interface Props {
 
 export function PostForm({ closeModal, type }: Props) {
   const [photos, setPhotos] = useState<string[]>([]);
+
+  const router = useRouter();
 
   const dispatch = useAppDispatch();
 
@@ -57,6 +60,7 @@ export function PostForm({ closeModal, type }: Props) {
     const newPhotos = await Promise.all(
       Array.from(files).map(async (file) => {
         const reader = new FileReader();
+
         return new Promise<string>((resolve) => {
           reader.onloadend = () => {
             resolve(reader.result as string);
@@ -67,12 +71,10 @@ export function PostForm({ closeModal, type }: Props) {
     );
 
     setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
-    const previousPhotos = getValues('imageUrls');
-    setValue('imageUrls', [...(previousPhotos || []), ...newPhotos]);
-  };
 
-  const removePhoto = (index: number) => {
-    setPhotos(photos.filter((_, idx) => idx !== index));
+    const previousPhotos = getValues('imageUrls');
+
+    setValue('imageUrls', [...(previousPhotos || []), ...newPhotos]);
   };
 
   const onSubmit = async ({ imageUrls, title, text }: FormValuesProps) => {
@@ -82,7 +84,10 @@ export function PostForm({ closeModal, type }: Props) {
       } else {
         dispatch(addPost('text', text || '', title));
       }
+
       if (closeModal) closeModal();
+
+      router.push('/');
     } catch (error) {
       console.error('Failed to submit application:', error);
     }
