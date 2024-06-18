@@ -1,11 +1,11 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from '../../../components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { SelectLanguage } from '~/components/select-language';
 import Link from 'next/link';
 
@@ -15,8 +15,29 @@ interface Props {
 
 export function Header({ locale }: Props) {
   const router = useRouter();
+
   const handleClick = () => {
     router.push(`${locale}/create-post`);
+  };
+
+  const pathname = usePathname();
+
+  const searchParams = useSearchParams();
+
+  const params = new URLSearchParams(searchParams.toString());
+
+  const [value, setValue] = useState('');
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+
+    if (event.target.value === '') {
+      params.delete('title');
+    } else {
+      params.set('title', event.target.value);
+    }
+
+    router.replace(`${pathname}?${params.toString()}`);
   };
 
   return (
@@ -27,9 +48,10 @@ export function Header({ locale }: Props) {
       <div className="flex flex-1  justify-center items-c">
         <Input
           placeholder="Search Reddit"
+          value={value}
           className="max-w-xl ml-48 bg-slate-200/65 hover:bg-slate-200 rounded-full"
+          onChange={handleInputChange}
         />
-        <span>Here will be kinda drop down </span>
       </div>
       <nav className="flex gap-3 items-center">
         <div className="hover:bg-slate-200  rounded-full p-2">

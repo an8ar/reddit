@@ -53,7 +53,7 @@ const sortingHandlers = {
   date: sortByDate,
 };
 
-export const selectFilteredPosts = createSelector(
+const selectFilteredPosts = createSelector(
   [selectPosts, selectSearchParams],
   (posts, searchParams) => {
     let filteredPosts = [...posts];
