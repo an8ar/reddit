@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
-
+import React from 'react';
 import { FormProvider, RHFCheckbox } from '~/components/hook-form';
 import { useForm } from 'react-hook-form';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -25,14 +24,9 @@ export function FilterForm() {
   });
 
   const router = useRouter();
-
   const pathname = usePathname();
-
-  const { watch } = methods;
-
-  const values = watch();
-
-  useEffect(() => {
+  const handleFormChange = () => {
+    const values = methods.getValues();
     const params = new URLSearchParams(searchParams.toString());
 
     Object.entries(values).forEach(([key, value]) => {
@@ -44,12 +38,13 @@ export function FilterForm() {
     });
 
     router.replace(`${pathname}?${params.toString()}`);
-  }, [values, pathname, router, searchParams]);
+  };
+
   return (
     <FormProvider methods={methods} className="flex flex-col gap-2 m-2">
-      <RHFCheckbox name="isText" label={t('text')} />
-      <RHFCheckbox name="isImage" label={t('image')} />
-      <RHFCheckbox name="isLink" label={t('link')} />
+      <RHFCheckbox name="isText" label={t('text')} onChange={handleFormChange} />
+      <RHFCheckbox name="isImage" label={t('image')} onChange={handleFormChange} />
+      <RHFCheckbox name="isLink" label={t('link')} onChange={handleFormChange} />
     </FormProvider>
   );
 }
