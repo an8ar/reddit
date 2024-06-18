@@ -8,6 +8,7 @@ import { Button } from '~/components/ui/button';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { SelectLanguage } from '~/components/select-language';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   locale: string;
@@ -15,6 +16,8 @@ interface Props {
 
 export function Header({ locale }: Props) {
   const router = useRouter();
+
+  const t = useTranslations('Header');
 
   const handleClick = () => {
     router.push(`${locale}/create-post`);
@@ -48,7 +51,7 @@ export function Header({ locale }: Props) {
 
       <div className="flex flex-1  justify-center items-c">
         <Input
-          placeholder="Search Reddit"
+          placeholder={t('input')}
           value={value}
           className="max-w-xl ml-48 bg-slate-200/65 hover:bg-slate-200 rounded-full"
           onChange={handleInputChange}
@@ -65,7 +68,7 @@ export function Header({ locale }: Props) {
           className="hover:bg-slate-200 rounded-full flex gap-2 items-center"
           onClick={handleClick}
         >
-          <Icon icon="teenyicons:add-outline" className="h-5 w-5" /> <span>Create </span>
+          <Icon icon="teenyicons:add-outline" className="h-5 w-5" /> <span>{t('button')} </span>
         </Button>
 
         <div className="hover:bg-slate-200 rounded-full p-2">
