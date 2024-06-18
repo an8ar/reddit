@@ -7,7 +7,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 export function FilterForm() {
-  type FormValuesProps = { isText: boolean; isImage: boolean; isLink: boolean };
+  type FormValuesProps = { isText: boolean; isImage: boolean; isLink: boolean; isAll: boolean };
 
   const t = useTranslations('Filter');
 
@@ -17,6 +17,7 @@ export function FilterForm() {
     isText: searchParams.get('isText') === 'true',
     isImage: searchParams.get('isImage') === 'true',
     isLink: searchParams.get('isLink') === 'true',
+    isAll: searchParams.get('isAll') === 'true',
   };
 
   const methods = useForm<FormValuesProps>({
@@ -27,6 +28,9 @@ export function FilterForm() {
   const pathname = usePathname();
   const handleFormChange = () => {
     const values = methods.getValues();
+    if (values['isAll']) {
+    }
+
     const params = new URLSearchParams(searchParams.toString());
 
     Object.entries(values).forEach(([key, value]) => {
@@ -45,6 +49,7 @@ export function FilterForm() {
       <RHFCheckbox name="isText" label={t('text')} onChange={handleFormChange} />
       <RHFCheckbox name="isImage" label={t('image')} onChange={handleFormChange} />
       <RHFCheckbox name="isLink" label={t('link')} onChange={handleFormChange} />
+      <RHFCheckbox name="all" label="All" onChange={handleFormChange} />
     </FormProvider>
   );
 }
