@@ -5,6 +5,7 @@ import { FormsTab } from '~/feature/posts';
 
 export default function Page() {
   const t = useTranslations('PostForm');
+
   return (
     <main className=" w-full">
       <header className="my-3">

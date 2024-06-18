@@ -22,9 +22,11 @@ import { useTranslations } from 'next-intl';
 
 export function PostFormDialog() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const handleClose = () => {
     setIsDialogOpen(false);
   };
+
   return (
     <Dialog open={isDialogOpen} onOpenChange={(open) => setIsDialogOpen(open)}>
       <DialogTrigger asChild>
@@ -32,6 +34,7 @@ export function PostFormDialog() {
           <Icon icon="teenyicons:add-outline" className="h-5 w-5" /> <span>Create </span>
         </Button>
       </DialogTrigger>
+
       <DialogContent className="max-w-4xl min-h-96">
         <DialogHeader>
           <DialogTitle>Create Post</DialogTitle>
@@ -48,7 +51,9 @@ interface FormTabProps {
 
 export function FormsTab({ closeModal }: FormTabProps) {
   const [tabValue, setTabValue] = useState<FormType>('text');
+
   const t = useTranslations('PostForm');
+
   const handleTabChange = (value: string) => {
     setTabValue(value as FormType);
   };

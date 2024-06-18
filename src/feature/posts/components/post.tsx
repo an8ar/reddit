@@ -30,7 +30,9 @@ export function Post({ title, imageUrls, text, linkUrl, createdAt }: Props) {
           height={600}
         />
       )}
+
       {text && <p className="text-sm text-gray-600">{text}</p>}
+
       {linkUrl && (
         <a href={linkUrl} target="_blank" className="text-blue-700 visited:text-violet-500">
           https://www.w3schools.com

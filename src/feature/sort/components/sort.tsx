@@ -16,21 +16,30 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 
 export function Sort() {
   const router = useRouter();
+
   const pathname = usePathname();
+
   const searchParams = useSearchParams();
+
   const params = new URLSearchParams(searchParams.toString());
+
   const currentSort = params.get('sortBy');
+
   const currentOrder = params.get('order');
 
   const handleSortChange = (newOrder: string) => {
     const [sortBy, order] = newOrder.split('|');
+
     if (currentSort === sortBy && currentOrder === order) {
       params.delete('sortBy');
+
       params.delete('order');
     } else {
       params.set('sortBy', sortBy);
+
       params.set('order', order);
     }
+
     router.replace(`${pathname}?${params.toString()}`);
   };
 
@@ -48,13 +57,16 @@ export function Sort() {
             </span>
           </Button>
         </DropdownMenuTrigger>
+
         <DropdownMenuContent className="w-56">
           <DropdownMenuRadioGroup
             value={`${currentSort}|${currentOrder}`}
             onValueChange={handleSortChange}
           >
             <DropdownMenuLabel>Sort by</DropdownMenuLabel>
+
             <DropdownMenuSeparator />
+
             <SortBy
               sortBy="date"
               options={[
@@ -63,6 +75,7 @@ export function Sort() {
               ]}
             />
             <DropdownMenuSeparator />
+
             <SortBy
               sortBy="name"
               options={[

@@ -45,6 +45,7 @@ export function Header({ locale }: Props) {
       <Link href={'/'} className="flex gap-3 items-center ">
         <Image src="/reddit.svg" alt="Italian Trulli" className="max-h-10" width={32} height={32} />
       </Link>
+
       <div className="flex flex-1  justify-center items-c">
         <Input
           placeholder="Search Reddit"
@@ -53,10 +54,12 @@ export function Header({ locale }: Props) {
           onChange={handleInputChange}
         />
       </div>
+
       <nav className="flex gap-3 items-center">
         <div className="hover:bg-slate-200  rounded-full p-2">
           <Icon icon="uiw:message" className="h-5 w-5" />
         </div>
+
         <Button
           variant={'link'}
           className="hover:bg-slate-200 rounded-full flex gap-2 items-center"
@@ -68,7 +71,9 @@ export function Header({ locale }: Props) {
         <div className="hover:bg-slate-200 rounded-full p-2">
           <Icon icon="uiw:bell" className="h-5 w-5" />
         </div>
+
         <SelectLanguage />
+
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>AS</AvatarFallback>

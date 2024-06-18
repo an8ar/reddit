@@ -16,6 +16,7 @@ interface Props {
 
 export function PostList({ searchParams }: Props) {
   const posts = useSelector((state: RootState) => selectSortedPosts(state, searchParams));
+
   return (
     <div>
       {posts.length > 0 ? (

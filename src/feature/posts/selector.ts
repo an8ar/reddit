@@ -19,8 +19,11 @@ const filterByContentType = (
   searchParams: { [key: string]: string | string[] | undefined },
 ) => {
   const isText = searchParams.isText === 'true';
+
   const isImage = searchParams.isImage === 'true';
+
   const isLink = searchParams.isLink === 'true';
+
   if (isText || isImage || isLink) {
     return posts.filter((post) => {
       return (
@@ -74,6 +77,7 @@ export const selectSortedPosts = createSelector(
     let sortedPosts = [...filteredPosts];
 
     const sortBy = searchParams.sortBy as keyof typeof sortingHandlers;
+
     const order = searchParams.order as 'asc' | 'desc';
 
     if (sortBy && order) {
