@@ -5,9 +5,12 @@ import React, { useEffect } from 'react';
 import { FormProvider, RHFCheckbox } from '~/components/hook-form';
 import { useForm } from 'react-hook-form';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export function FilterForm() {
   type FormValuesProps = { isText: boolean; isImage: boolean; isLink: boolean };
+
+  const t = useTranslations('Filter');
 
   const searchParams = useSearchParams();
 
@@ -44,9 +47,9 @@ export function FilterForm() {
   }, [values, pathname, router, searchParams]);
   return (
     <FormProvider methods={methods} className="flex flex-col gap-2 m-2">
-      <RHFCheckbox name="isText" label="Text" />
-      <RHFCheckbox name="isImage" label="Image" />
-      <RHFCheckbox name="isLink" label="Link" />
+      <RHFCheckbox name="isText" label={t('text')} />
+      <RHFCheckbox name="isImage" label={t('image')} />
+      <RHFCheckbox name="isLink" label={t('link')} />
     </FormProvider>
   );
 }

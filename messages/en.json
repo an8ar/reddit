@@ -3,7 +3,9 @@
     "title": "Hello world!"
   },
   "Header": {
-    "name": ""
+    "appName": "Reddit",
+    "input": "Search Reddit",
+    "button": "Create"
   },
   "SideBar": {
     "home": "Home",
@@ -16,8 +18,23 @@
     }
   },
   "Sort": {
-    "date": "by date",
-    "name": "by name"
+    "button": "Sort",
+    "title": "Sort by",
+    "date": {
+      "new": "New",
+      "old": "Old"
+    },
+    "name": {
+      "alphabetical": "A-Z",
+      "reverse_alphabetical": "Z-A"
+    }
+  },
+  "Filter": {
+    "button": "Filter",
+    "title": "Post type",
+    "text": "Text",
+    "image": "Image",
+    "link": "Link"
   },
   "LocaleSwitcher": {
     "locale": "{locale, select, ru {Russian} en {English} other {Unknown}}",

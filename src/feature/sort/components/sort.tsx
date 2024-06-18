@@ -13,9 +13,12 @@ import {
 } from '~/components/ui/dropdown-menu';
 import { SortBy } from './sort-by';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import { useTranslations } from 'next-intl';
 
 export function Sort() {
   const router = useRouter();
+
+  const t = useTranslations('Sort');
 
   const pathname = usePathname();
 
@@ -51,7 +54,7 @@ export function Sort() {
             variant="outline"
             className="border-0 text-xs ring-0 px-3 py-2 focus-visible:ring-0 focus-visible:ring-offset-0"
           >
-            Sort
+            {t('button')}
             <span className="ml-1">
               <Icon icon="mingcute:down-line" className="size-3" />
             </span>
@@ -63,15 +66,15 @@ export function Sort() {
             value={`${currentSort}|${currentOrder}`}
             onValueChange={handleSortChange}
           >
-            <DropdownMenuLabel>Sort by</DropdownMenuLabel>
+            <DropdownMenuLabel>{t('title')}</DropdownMenuLabel>
 
             <DropdownMenuSeparator />
 
             <SortBy
               sortBy="date"
               options={[
-                { value: 'date|asc', label: 'New' },
-                { value: 'date|desc', label: 'Old' },
+                { value: 'date|asc', label: t('date.new') },
+                { value: 'date|desc', label: t('date.old') },
               ]}
             />
             <DropdownMenuSeparator />
@@ -79,8 +82,8 @@ export function Sort() {
             <SortBy
               sortBy="name"
               options={[
-                { value: 'name|asc', label: 'A-Z' },
-                { value: 'name|desc', label: 'Z-A' },
+                { value: 'name|asc', label: t('name.alphabetical') },
+                { value: 'name|desc', label: t('name.reverse_alphabetical') },
               ]}
             />
           </DropdownMenuRadioGroup>

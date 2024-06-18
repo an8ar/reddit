@@ -3,7 +3,9 @@
     "title": "Привет, мир!"
   },
   "Header": {
-    "name": ""
+    "appName": "Reddit",
+    "input": "Поиск Reddit",
+    "button": "Создать"
   },
   "SideBar": {
     "home": "Главная",
@@ -16,16 +18,30 @@
     }
   },
   "Sort": {
-    "date": "по дате",
-    "name": "по имени"
+    "button": "Сортировать",
+    "title": "Сортировать по",
+    "date": {
+      "new": "Новые",
+      "old": "Старые"
+    },
+    "name": {
+      "alphabetical": "А-Я",
+      "reverse_alphabetical": "Я-А"
+    }
+  },
+  "Filter": {
+    "button": "Фильтр",
+    "title": "Тип поста",
+    "text": "Текст",
+    "image": "Изображение",
+    "link": "Ссылка"
   },
   "LocaleSwitcher": {
-    "locale": "{locale, select, en {Английский} ru {Русский} other {Не известный}}",
+    "locale": "{locale, select, ru {Русский} en {Английский} other {Неизвестный}}",
     "title": "Язык"
   },
   "PostForm": {
     "name": "Добавить пост",
-
     "Tab": {
       "text": "Текст",
       "image": "Фото"
