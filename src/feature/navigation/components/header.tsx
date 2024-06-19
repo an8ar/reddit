@@ -76,11 +76,12 @@ export function Header({ locale }: Props) {
         </div>
 
         <SelectLanguage />
-
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>AS</AvatarFallback>
-        </Avatar>
+        <Link href={`/${locale}/profile`}>
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>AS</AvatarFallback>
+          </Avatar>
+        </Link>
       </nav>
     </header>
   );
