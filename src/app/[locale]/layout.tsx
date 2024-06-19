@@ -32,7 +32,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <Header locale={locale} />
             <div className="flex gap-10 w-9/12">
-              <SideBar />
+              <SideBar locale={locale} />
 
               {children}
             </div>
