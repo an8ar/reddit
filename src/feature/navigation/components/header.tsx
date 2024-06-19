@@ -9,6 +9,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { SelectLanguage } from '~/components/select-language';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { Message } from './message';
 
 interface Props {
   locale: string;
@@ -20,7 +21,7 @@ export function Header({ locale }: Props) {
   const t = useTranslations('Header');
 
   const handleClick = () => {
-    router.push(`${locale}/create-post`);
+    router.push(`/${locale}/create-post`);
   };
 
   const pathname = usePathname();
@@ -59,9 +60,7 @@ export function Header({ locale }: Props) {
       </div>
 
       <nav className="flex gap-3 items-center">
-        <div className="hover:bg-slate-200  rounded-full p-2">
-          <Icon icon="uiw:message" className="h-5 w-5" />
-        </div>
+        <Message />
 
         <Button
           variant={'link'}
@@ -71,11 +70,8 @@ export function Header({ locale }: Props) {
           <Icon icon="teenyicons:add-outline" className="h-5 w-5" /> <span>{t('button')} </span>
         </Button>
 
-        <div className="hover:bg-slate-200 rounded-full p-2">
-          <Icon icon="uiw:bell" className="h-5 w-5" />
-        </div>
-
         <SelectLanguage />
+
         <Link href={`/${locale}/profile`}>
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" />
