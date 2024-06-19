@@ -6,10 +6,23 @@ interface RHFCheckboxProps {
   name: string;
   label?: string;
   description?: { icon: JSX.Element; text: string };
-  onChange?: () => void; // Added to allow handling changes
+  onChange?: () => void;
+  className?: string;
+  disabled?: boolean;
+  icon: string;
+  withIndicator: boolean;
 }
 
-export function RHFCheckbox({ name, label, description, onChange }: RHFCheckboxProps) {
+export function RHFCheckbox({
+  name,
+  label,
+  description,
+  onChange,
+  className,
+  disabled,
+  icon,
+  withIndicator,
+}: RHFCheckboxProps) {
   const { control } = useFormContext();
 
   const {
@@ -34,7 +47,15 @@ export function RHFCheckbox({ name, label, description, onChange }: RHFCheckboxP
       render={() => (
         <FormItem className="flex flex-row items-center space-x-3 space-y-0 rounded-md ">
           <FormControl>
-            <Checkbox checked={value} onCheckedChange={handleChange} onBlur={onBlur} />
+            <Checkbox
+              checked={value}
+              onCheckedChange={handleChange}
+              onBlur={onBlur}
+              className={className}
+              disabled={disabled}
+              icon={icon}
+              withIndicator={withIndicator}
+            />
           </FormControl>
           <div className="flex gap-4 items-center">
             {label && <FormLabel className="text-sm">{label}</FormLabel>}
