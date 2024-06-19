@@ -34,7 +34,9 @@
     "title": "Post type",
     "text": "Text",
     "image": "Image",
-    "link": "Link"
+    "link": "Link",
+    "all": "All",
+    "remove": "Remove"
   },
   "LocaleSwitcher": {
     "locale": "{locale, select, ru {Russian} en {English} other {Unknown}}",
