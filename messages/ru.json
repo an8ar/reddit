@@ -34,7 +34,9 @@
     "title": "Тип поста",
     "text": "Текст",
     "image": "Изображение",
-    "link": "Ссылка"
+    "link": "Ссылка",
+    "all": "Все",
+    "remove": "Очистить"
   },
   "LocaleSwitcher": {
     "locale": "{locale, select, ru {Русский} en {Английский} other {Неизвестный}}",
