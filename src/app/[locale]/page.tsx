@@ -1,6 +1,6 @@
 import { PostList } from '~/feature/posts';
 import { Sort } from '~/feature/sort';
-import { Filter } from '~/feature/filter';
+import { DateRangeFilter, Filter } from '~/feature/filter';
 
 export default function Home({
   searchParams,
@@ -12,6 +12,7 @@ export default function Home({
       <header className=" border-b py-2 flex gap-4">
         <Filter />
         <Sort />
+        <DateRangeFilter />
       </header>
       <section className=" ">
         <PostList searchParams={searchParams} />
