@@ -8,7 +8,6 @@ interface RHFCheckboxProps {
   description?: { icon: JSX.Element; text: string };
   onChange?: () => void;
   className?: string;
-  disabled?: boolean;
   icon: string;
   withIndicator: boolean;
 }
@@ -19,7 +18,6 @@ export function RHFCheckbox({
   description,
   onChange,
   className,
-  disabled,
   icon,
   withIndicator,
 }: RHFCheckboxProps) {
@@ -52,7 +50,6 @@ export function RHFCheckbox({
               onCheckedChange={handleChange}
               onBlur={onBlur}
               className={className}
-              disabled={disabled}
               icon={icon}
               withIndicator={withIndicator}
             />

@@ -11,8 +11,6 @@ export function FilterForm() {
     isText: boolean;
     isImage: boolean;
     isLink: boolean;
-    isAll: boolean;
-    isRemove: boolean;
   };
 
   const t = useTranslations('Filter');
@@ -21,13 +19,7 @@ export function FilterForm() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const filterKeys: (keyof FormValuesProps)[] = [
-    'isText',
-    'isImage',
-    'isLink',
-    'isAll',
-    'isRemove',
-  ];
+  const filterKeys: (keyof FormValuesProps)[] = ['isText', 'isImage', 'isLink'];
 
   const defaultValues: FormValuesProps = filterKeys.reduce((acc, key) => {
     acc[key] = searchParams.get(key) === 'true';
@@ -56,77 +48,48 @@ export function FilterForm() {
     router.replace(`${pathname}?${params.toString()}`);
   };
 
-  const clearAllFilters = () => {
-    filterKeys.forEach((key) => {
-      setValue(key, false, { shouldDirty: true });
-      params.delete(key);
-    });
+  const toggleAllFilters = () => {
+    const allSelected = filterKeys.every((key) => getValues(key));
+    const newValue = !allSelected;
 
-    router.replace(`${pathname}?${params.toString()}`);
-  };
-
-  const selectAllFilters = () => {
     filterKeys.forEach((key) => {
-      if (key !== 'isAll' && key !== 'isRemove') {
-        setValue(key, true, { shouldDirty: true });
+      setValue(key, newValue, { shouldDirty: true });
+      if (newValue) {
         params.set(key, 'true');
+      } else {
+        params.delete(key);
       }
     });
+
     router.replace(`${pathname}?${params.toString()}`);
   };
 
   const allFieldsSelected = () => {
-    const allSelected = filterKeys.every((key) => {
-      if (key === 'isAll' || key === 'isRemove') {
-        return true;
-      }
-      return getValues(key);
-    });
-
-    if (!getValues('isAll') && allSelected) {
-      setValue('isAll', true);
-    }
-
-    return allSelected;
+    return filterKeys.every((key) => getValues(key));
   };
 
   return (
     <FormProvider methods={methods} className="flex flex-col gap-2 m-2">
-      <div className="flex gap-2">
-        <RHFCheckbox
-          key="isRemove"
-          name="isRemove"
-          label={t('remove')}
-          onChange={clearAllFilters}
-          className="bg-gray-300"
-          withIndicator={false}
-          icon="material-symbols:remove"
-        />
+      <RHFCheckbox
+        key="toggleAll"
+        name="toggleAll"
+        label="Toggle"
+        onChange={toggleAllFilters}
+        withIndicator={false}
+        className="bg-black text-white"
+        icon={allFieldsSelected() ? 'material-symbols:remove' : 'lets-icons:done-all-alt-round'}
+      />
 
+      {filterKeys.map((key) => (
         <RHFCheckbox
-          key="isAll"
-          name="isAll"
-          label={t('all')}
-          onChange={selectAllFilters}
-          disabled={allFieldsSelected()}
-          withIndicator={false}
-          className="bg-black text-white"
-          icon="lets-icons:done-all-alt-round"
+          key={key}
+          name={key}
+          label={t(key.replace('is', '').toLowerCase())}
+          onChange={updateFilters}
+          withIndicator={true}
+          icon="ic:outline-check"
         />
-      </div>
-
-      {filterKeys
-        .filter((key) => key !== 'isAll' && key !== 'isRemove')
-        .map((key) => (
-          <RHFCheckbox
-            key={key}
-            name={key}
-            label={t(key.replace('is', '').toLowerCase())}
-            onChange={updateFilters}
-            withIndicator={true}
-            icon="ic:outline-check"
-          />
-        ))}
+      ))}
     </FormProvider>
   );
 }
