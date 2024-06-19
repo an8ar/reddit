@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit';
 import { Post, PostsState } from './types';
-import dayjs from 'dayjs';
 import { initialPosts } from './constants';
 
 const initialState: PostsState = {
