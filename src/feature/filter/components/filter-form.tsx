@@ -5,7 +5,6 @@ import { FormProvider, RHFCheckbox } from '~/components/hook-form';
 import { useForm } from 'react-hook-form';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { CheckCheck } from 'lucide-react';
 
 export function FilterForm() {
   type FormValuesProps = {
