@@ -40,7 +40,7 @@ export function FilterForm() {
 
   const { setValue, getValues } = methods;
 
-  const params = new URLSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
 
   const updateFilters = () => {
     const values = getValues();
