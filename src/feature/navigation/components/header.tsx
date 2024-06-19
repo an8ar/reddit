@@ -46,9 +46,9 @@ export function Header({ locale }: Props) {
   return (
     <header className=" px-4 py-2 h-14 border-b flex gap-3 items-center justify-between ">
       <Link href={'/'} className="flex gap-3 items-center ">
-        <Image src="/reddit.svg" alt="Italian Trulli" className="max-h-10" width={32} height={32} />
+        <Image src="/reddit.svg" alt="Reddit" className="max-h-10" width={32} height={32} />
+        <span className="font-extrabold  text-3xl text-orange-600">reddit</span>
       </Link>
-
       <div className="flex flex-1  justify-center items-c">
         <Input
           placeholder={t('input')}
