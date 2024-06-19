@@ -7,7 +7,7 @@ const selectPosts = (state: RootState) => state.postsSlice.posts;
 
 const selectSearchParams = (
   state: RootState,
-  searchParams: { [key: string]: string | string[] | undefined },
+  searchParams: { [key: string]: string | undefined },
 ) => searchParams;
 
 const filterByTitle = (posts: Post[], title: string) => {
@@ -16,12 +16,10 @@ const filterByTitle = (posts: Post[], title: string) => {
 
 const filterByContentType = (
   posts: Post[],
-  searchParams: { [key: string]: string | string[] | undefined },
+  searchParams: { [key: string]: string | undefined },
 ) => {
   const isText = searchParams.isText === 'true';
-
   const isImage = searchParams.isImage === 'true';
-
   const isLink = searchParams.isLink === 'true';
 
   if (isText || isImage || isLink) {
@@ -35,6 +33,22 @@ const filterByContentType = (
   } else {
     return posts;
   }
+};
+
+const filterByDateRange = (
+  posts: Post[],
+  startDate: string | undefined,
+  endDate: string | undefined,
+) => {
+  if (startDate || endDate) {
+    const start = startDate ? dayjs(startDate) : dayjs(0);
+    const end = endDate ? dayjs(endDate) : dayjs();
+    return posts.filter((post) => {
+      const postDate = dayjs(post.createdAt);
+      return postDate.isAfter(start) && postDate.isBefore(end);
+    });
+  }
+  return posts;
 };
 
 const sortByName = (posts: Post[], order: 'asc' | 'desc') => {
@@ -67,6 +81,14 @@ const selectFilteredPosts = createSelector(
 
     filteredPosts = filterByContentType(filteredPosts, searchParams);
 
+    if (searchParams.date) {
+      const [paramsDateFrom, paramsDateTo] = searchParams.date
+        ? searchParams.date.split(';')
+        : [undefined, undefined];
+
+      filteredPosts = filterByDateRange(filteredPosts, paramsDateFrom, paramsDateTo);
+    }
+
     return filteredPosts;
   },
 );
@@ -77,7 +99,6 @@ export const selectSortedPosts = createSelector(
     let sortedPosts = [...filteredPosts];
 
     const sortBy = searchParams.sortBy as keyof typeof sortingHandlers;
-
     const order = searchParams.order as 'asc' | 'desc';
 
     if (sortBy && order) {
