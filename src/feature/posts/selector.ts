@@ -3,7 +3,7 @@ import { RootState } from '~/store';
 import { Post } from './types';
 import dayjs from 'dayjs';
 
-const selectPosts = (state: RootState) => state.postsSlice.posts;
+const selectPosts = (state: RootState) => state.postSlice.posts;
 
 const selectSearchParams = (
   state: RootState,
