@@ -1,5 +1,5 @@
 import { useLocale, useTranslations } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import * as React from 'react';
 
 import {
@@ -14,14 +14,15 @@ import {
 
 export function SelectLanguage() {
   const router = useRouter();
+
   const t = useTranslations('LocaleSwitcher');
 
-  const pathname = usePathname();
+  const searchParams = useSearchParams().toString();
+
   const locale = useLocale();
 
   const handleLanguageChange = (value: string) => {
-    const newPathname = pathname.replace(`/${locale}`, `/${value}`);
-    router.replace(newPathname);
+    router.replace(`/${value}?${searchParams}`);
   };
 
   return (
