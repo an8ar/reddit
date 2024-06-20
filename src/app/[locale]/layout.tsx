@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { Header, SideBar } from '~/feature/navigation';
 import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
-const ReduxProviders = dynamic(() => import('~/store/store-provider'), {
+const StoreProvider = dynamic(() => import('~/store/store-provider'), {
   ssr: false,
 });
 
@@ -28,16 +28,16 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <ReduxProviders>
-          <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages}>
+          <StoreProvider>
             <Header locale={locale} />
             <div className="flex gap-10 w-9/12">
               <SideBar locale={locale} />
 
               {children}
             </div>
-          </NextIntlClientProvider>
-        </ReduxProviders>
+          </StoreProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
