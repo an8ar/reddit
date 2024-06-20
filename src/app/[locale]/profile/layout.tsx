@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
+import { Skeleton } from '~/components/ui/skeleton';
 
 export default async function RootLayout({
   children,
