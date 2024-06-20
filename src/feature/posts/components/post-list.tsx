@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Post } from './post';
 
 import { useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import { RootState } from '~/store';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import ru from 'javascript-time-ago/locale/ru';
+import { usePathname, useRouter } from 'next/navigation';
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
 interface Props {
@@ -15,6 +16,15 @@ interface Props {
 }
 
 export function PostList({ searchParams }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (Object.keys(searchParams).length === 0) {
+      router.replace(`${pathname}?sortBy=date&order=asc`);
+    }
+  }, [pathname, router, searchParams]);
+
   const posts = useSelector((state: RootState) => selectSortedPosts(state, searchParams));
 
   return (
