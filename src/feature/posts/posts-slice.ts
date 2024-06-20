@@ -1,13 +1,15 @@
 import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit';
 import { Post, PostsState } from './types';
 import { initialPosts } from './constants';
+import { persistReducer } from 'redux-persist';
+import storage from '~/store/persist-storage';
 
 const initialState: PostsState = {
   posts: initialPosts,
 };
 
-export const postsSlice = createSlice({
-  name: 'postsSlice',
+export const postSlice = createSlice({
+  name: 'postSlice',
   initialState,
   reducers: {
     addPost: {
@@ -46,5 +48,15 @@ export const postsSlice = createSlice({
   },
 });
 
-export const { addPost } = postsSlice.actions;
-export default postsSlice.reducer;
+export const { addPost } = postSlice.actions;
+
+export const postReducer = persistReducer(
+  {
+    key: 'rtk:post',
+    storage,
+    whitelist: [],
+  },
+  postSlice.reducer,
+);
+
+export default postReducer;
