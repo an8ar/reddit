@@ -12,13 +12,9 @@ export default function Loading() {
         </div>
       </div>
       <div className="flex justify-between text-sm font-medium">
-        <Skeleton className="h-9 w-[92px]" />
-        <Skeleton className="h-9 w-[92px]" />
-        <Skeleton className="h-9 w-[92px]" />
-        <Skeleton className="h-9 w-[92px]" />
-        <Skeleton className="h-9 w-[92px]" />
-        <Skeleton className="h-9 w-[92px]" />
-        <Skeleton className="h-9 w-[92px]" />
+        {[...Array(7)].map((_, index) => (
+          <Skeleton key={index} className="h-9 w-[92px]" />
+        ))}
       </div>
     </div>
   );
