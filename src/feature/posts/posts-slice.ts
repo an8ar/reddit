@@ -27,13 +27,13 @@ export const postSlice = createSlice({
 
         switch (postType) {
           case 'text':
-            post = { id, createdAt, title, text: content as string };
+            post = { id, createdAt, title, text: content as string, voteCount: 0 };
             break;
           case 'image':
-            post = { id, createdAt, title, imageUrls: content as string[] }; // Cast to string[]
+            post = { id, createdAt, title, imageUrls: content as string[], voteCount: 0 }; // Cast to string[]
             break;
           case 'link':
-            post = { id, createdAt, title, linkUrl: content as string };
+            post = { id, createdAt, title, linkUrl: content as string, voteCount: 0 };
             break;
           default:
             throw new Error('Invalid post type');
@@ -51,10 +51,22 @@ export const postSlice = createSlice({
     resetForm(state) {
       state.form = { title: '' };
     },
+    upVote(state, action: PayloadAction<{ postId: string }>) {
+      const post = state.posts.find((post) => post.id === action.payload.postId);
+      if (post) {
+        post.voteCount++;
+      }
+    },
+    downVote(state, action: PayloadAction<{ postId: string }>) {
+      const post = state.posts.find((post) => post.id === action.payload.postId);
+      if (post) {
+        post.voteCount--;
+      }
+    },
   },
 });
 
-export const { addPost, updateForm } = postSlice.actions;
+export const { addPost, updateForm, upVote, downVote } = postSlice.actions;
 
 export const postReducer = persistReducer(
   {
