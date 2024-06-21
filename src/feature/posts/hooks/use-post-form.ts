@@ -29,7 +29,8 @@ export const usePostForm = () => {
   const watchedFields = watch();
 
   useEffect(() => {
-    const isFormChanged = watchedFields.title !== defaultValues.title;
+    const isFormChanged =
+      watchedFields.title !== defaultValues.title || watchedFields.text !== defaultValues.text;
 
     if (isFormChanged) {
       dispatch(updateForm(watchedFields));
