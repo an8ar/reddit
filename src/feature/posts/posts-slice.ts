@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit';
-import { Post, PostsState } from './types';
+import { FormValuesProps, Post, PostsState } from './types';
 import { initialPosts } from './constants';
 import { persistReducer } from 'redux-persist';
 import storage from '~/store/persist-storage';
@@ -45,16 +45,22 @@ export const postSlice = createSlice({
     deletePost(state, action: PayloadAction<{ postId: string }>) {
       state.posts = state.posts.filter((post) => post.id !== action.payload.postId);
     },
+    updateForm(state, action: PayloadAction<FormValuesProps>) {
+      state.form = action.payload;
+    },
+    resetForm(state) {
+      state.form = { title: '' };
+    },
   },
 });
 
-export const { addPost } = postSlice.actions;
+export const { addPost, updateForm } = postSlice.actions;
 
 export const postReducer = persistReducer(
   {
     key: 'rtk:post',
     storage,
-    whitelist: [],
+    whitelist: ['form'],
   },
   postSlice.reducer,
 );
