@@ -2,10 +2,14 @@ import React from 'react';
 import { VoteButton } from './vote-button';
 import { Comment } from './comment';
 
-export function Interactions() {
+interface Props {
+  postId: string;
+  voteCount: number;
+}
+export function Interactions(props: Props) {
   return (
     <div className="flex gap-2">
-      <VoteButton />
+      <VoteButton {...props} />
       <Comment />
     </div>
   );

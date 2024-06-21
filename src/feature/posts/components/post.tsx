@@ -8,7 +8,7 @@ import { useParams } from 'next/navigation';
 
 interface Props extends IPost {}
 
-export function Post({ title, imageUrls, text, linkUrl, createdAt }: Props) {
+export function Post({ title, imageUrls, text, linkUrl, createdAt, voteCount, id }: Props) {
   const params = useParams<{ locale: string }>();
 
   return (
@@ -38,7 +38,7 @@ export function Post({ title, imageUrls, text, linkUrl, createdAt }: Props) {
           https://www.w3schools.com
         </a>
       )}
-      <Interactions />
+      <Interactions voteCount={voteCount} postId={id} />
     </div>
   );
 }
