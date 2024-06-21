@@ -20,25 +20,25 @@ export function PostList({ searchParams }: Props) {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (Object.keys(searchParams).length === 0) {
-      router.replace(`${pathname}?sortBy=date&order=asc`);
-    }
+    if (Object.keys(searchParams).length !== 0) return;
+
+    router.replace(`${pathname}?sortBy=date&order=asc`);
   }, [pathname, router, searchParams]);
 
   const posts = useSelector((state: RootState) => selectSortedPosts(state, searchParams));
 
+  if (posts.length === 0) {
+    return <div>No posts</div>;
+  }
+
   return (
     <div>
-      {posts.length > 0 ? (
-        posts.map((post) => (
-          <article className=" flex flex-col gap-2" key={post.id}>
-            <Post {...post} />
-            <div className="border-t border-gray-200 " />
-          </article>
-        ))
-      ) : (
-        <div>No posts</div>
-      )}
+      {posts.map((post) => (
+        <article className=" flex flex-col gap-2" key={post.id}>
+          <Post {...post} />
+          <div className="border-t border-gray-200 " />
+        </article>
+      ))}
     </div>
   );
 }
