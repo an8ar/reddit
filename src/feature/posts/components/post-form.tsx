@@ -1,10 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import * as Yup from 'yup';
+import React from 'react';
 
 import { FormProvider, RHFTextArea } from '~/components/hook-form';
 import { Button } from '~/components/ui/button';
@@ -12,19 +8,12 @@ import { FileUploadArea } from '~/components/upload-file-area';
 import { useAppDispatch } from '~/store/hooks';
 
 import { addPost } from '../posts-slice';
-import { FormType, Post } from '../types';
+import { FormType, FormValuesProps } from '../types';
 
 import { PostPhotoCarousel } from './post-photo-carousel';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-
-type FormValuesProps = Omit<Post, 'id' | 'createdAt'>;
-
-const CreatePostSchema = Yup.object().shape({
-  title: Yup.string().required('Please fill out this field.'),
-  imageUrls: Yup.array().of(Yup.string().required()).optional(),
-  text: Yup.string().optional(),
-});
+import { useFileUpload, usePostForm } from '../hooks';
 
 interface Props {
   closeModal?: () => void;
@@ -32,50 +21,17 @@ interface Props {
 }
 
 export function PostForm({ closeModal, type }: Props) {
-  const [photos, setPhotos] = useState<string[]>([]);
-
   const router = useRouter();
 
   const dispatch = useAppDispatch();
 
-  const defaultValues = {
-    title: '',
-    imageUrls: [],
-  };
-
   const t = useTranslations('PostForm');
 
-  const methods = useForm<FormValuesProps>({
-    resolver: yupResolver(CreatePostSchema),
-    defaultValues,
-  });
+  const methods = usePostForm();
 
   const { handleSubmit, setValue, getValues } = methods;
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = e.target;
-
-    if (!files) return;
-
-    const newPhotos = await Promise.all(
-      Array.from(files).map(async (file) => {
-        const reader = new FileReader();
-
-        return new Promise<string>((resolve) => {
-          reader.onloadend = () => {
-            resolve(reader.result as string);
-          };
-          reader.readAsDataURL(file);
-        });
-      }),
-    );
-
-    setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
-
-    const previousPhotos = getValues('imageUrls');
-
-    setValue('imageUrls', [...(previousPhotos || []), ...newPhotos]);
-  };
+  const { photos, handleFileChange } = useFileUpload(setValue, getValues);
 
   const onSubmit = async ({ imageUrls, title, text }: FormValuesProps) => {
     try {
@@ -97,10 +53,13 @@ export function PostForm({ closeModal, type }: Props) {
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <section className="flex flex-col gap-2 mt-2">
         <RHFTextArea name="title" placeholder={t('title')} maxLength={300} />
+
         {type === 'text' && <RHFTextArea name="text" placeholder={t('body')} className="h-40" />}
+
         {type === 'image' && photos.length <= 0 && (
           <FileUploadArea handleFileChange={handleFileChange} />
         )}
+
         {type === 'image' && photos.length > 0 && (
           <PostPhotoCarousel handleFileChange={handleFileChange} photos={photos} />
         )}
