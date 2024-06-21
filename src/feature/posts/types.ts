@@ -9,5 +9,8 @@ export interface Post {
 
 export interface PostsState {
   posts: Post[];
+  form?: FormValuesProps;
 }
-export type FormType = "text" | "image";
+export type FormType = 'text' | 'image';
+
+export type FormValuesProps = Omit<Post, 'id' | 'createdAt'>;
