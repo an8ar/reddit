@@ -5,6 +5,7 @@ export interface Post {
   text?: string;
   imageUrls?: string[];
   linkUrl?: string;
+  voteCount: number;
 }
 
 export interface PostsState {
@@ -13,4 +14,4 @@ export interface PostsState {
 }
 export type FormType = 'text' | 'image';
 
-export type FormValuesProps = Omit<Post, 'id' | 'createdAt'>;
+export type FormValuesProps = Omit<Post, 'id' | 'createdAt' | 'voteCount'>;
