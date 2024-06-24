@@ -10,6 +10,7 @@ import { SelectLanguage } from '~/components/select-language';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Message } from './message';
+import { HeaderInput } from '~/feature/header-input';
 
 interface Props {
   locale: string;
@@ -24,26 +25,6 @@ export function Header({ locale }: Props) {
     router.push(`/${locale}/create-post`);
   };
 
-  const pathname = usePathname();
-
-  const searchParams = useSearchParams();
-
-  const params = new URLSearchParams(searchParams.toString());
-
-  const [value, setValue] = useState('');
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-
-    if (event.target.value === '') {
-      params.delete('title');
-    } else {
-      params.set('title', event.target.value);
-    }
-
-    router.replace(`${pathname}?${params.toString()}`);
-  };
-
   return (
     <header className=" px-4 py-2 h-14 border-b flex gap-3 items-center justify-between ">
       <Link href={'/'} className="flex gap-3 items-center ">
@@ -51,12 +32,7 @@ export function Header({ locale }: Props) {
         <span className="font-extrabold  text-3xl text-orange-600">reddit</span>
       </Link>
       <div className="flex flex-1  justify-center items-c">
-        <Input
-          placeholder={t('input')}
-          value={value}
-          className="max-w-xl ml-48 bg-slate-200/65 hover:bg-slate-200 rounded-full"
-          onChange={handleInputChange}
-        />
+        <HeaderInput />
       </div>
 
       <nav className="flex gap-3 items-center">
