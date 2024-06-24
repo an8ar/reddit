@@ -7,12 +7,8 @@ interface Props {
   voteCount: number;
 }
 export function Interactions(props: Props) {
-  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
   return (
-    <div className="flex gap-2" onClick={handleClick}>
+    <div className="flex gap-2">
       <VoteButton {...props} />
       <Comment />
     </div>
