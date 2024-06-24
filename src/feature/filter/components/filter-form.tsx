@@ -6,20 +6,20 @@ import { useForm } from 'react-hook-form';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
-export function FilterForm() {
-  type FormValuesProps = {
-    isText: boolean;
-    isImage: boolean;
-    isLink: boolean;
-  };
+type FormValuesProps = {
+  isText: boolean;
+  isImage: boolean;
+  isLink: boolean;
+};
 
+export const filterKeys: (keyof FormValuesProps)[] = ['isText', 'isImage', 'isLink'];
+
+export function FilterForm() {
   const t = useTranslations('Filter');
 
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-
-  const filterKeys: (keyof FormValuesProps)[] = ['isText', 'isImage', 'isLink'];
 
   const defaultValues: FormValuesProps = filterKeys.reduce((acc, key) => {
     acc[key] = searchParams.get(key) === 'true';
