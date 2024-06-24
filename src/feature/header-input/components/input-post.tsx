@@ -2,21 +2,30 @@
 import React from 'react';
 import { Post as IPost } from '~/feature/posts/types';
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter, usePathname, useParams } from 'next/navigation';
 
-interface Props extends IPost {}
+interface Props extends IPost {
+  setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export function InputPost({ title, imageUrls, text, linkUrl, id }: Props) {
+export function InputPost({ title, imageUrls, text, linkUrl, id, setIsVisible }: Props) {
   const router = useRouter();
 
   const pathname = usePathname();
 
   const handleClick = () => {
-    router.push(`${pathname}/post/${id}`);
+    setIsVisible(false);
+
+    if (pathname.includes('post')) {
+      router.push(`${id}`);
+    } else {
+      router.push(`${pathname}/post/${id}`);
+    }
   };
+
   return (
     <div
-      className="flex justify-between gap-1 hover:bg-slate-100  px-4 py-2 hover:cursor-pointer"
+      className="flex justify-between gap-1 hover:bg-slate-100 px-4 py-2 hover:cursor-pointer"
       onClick={handleClick}
     >
       <div>
@@ -36,7 +45,7 @@ export function InputPost({ title, imageUrls, text, linkUrl, id }: Props) {
         {imageUrls && (
           <Image
             src={imageUrls[0]}
-            className=" rounded-lg object-fit"
+            className="rounded-lg object-fit"
             alt={title}
             width={100}
             height={100}
