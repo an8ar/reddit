@@ -4,15 +4,25 @@ import { Post as IPost } from '../types';
 import Image from 'next/image';
 import { Interactions } from '~/feature/post-interactions';
 import ReactTimeAgo from 'react-time-ago';
-import { useParams } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 
 interface Props extends IPost {}
 
 export function Post({ title, imageUrls, text, linkUrl, createdAt, voteCount, id }: Props) {
   const params = useParams<{ locale: string }>();
 
+  const router = useRouter();
+
+  const pathname = usePathname();
+
+  const handleClick = () => {
+    router.push(`${pathname}/post/${id}`);
+  };
   return (
-    <div className="flex flex-col gap-2 hover:bg-slate-100 rounded-lg px-4 py-2">
+    <div
+      className="flex flex-col gap-2 hover:bg-slate-100 rounded-lg px-4 py-2 hover:cursor-pointer"
+      onClick={handleClick}
+    >
       <div className="flex gap-2 text-xs">
         <span className="font-semibold">an8ar</span>
         <span className="text-gray-400">
