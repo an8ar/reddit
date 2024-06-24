@@ -10,7 +10,10 @@ interface Props {
 
 export function VoteButton({ voteCount, postId }: Props) {
   const dispatch = useAppDispatch();
-
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
   const handleUpVote = () => {
     dispatch(upVote({ postId }));
   };
@@ -20,7 +23,7 @@ export function VoteButton({ voteCount, postId }: Props) {
   };
 
   return (
-    <div className="flex items-center   bg-slate-200 rounded-full ">
+    <div className="flex items-center   bg-slate-200 rounded-full" onClick={handleClick}>
       <Button
         className="p-2 hover:bg-slate-300 rounded-full hover:text-red-400"
         size="icon"
