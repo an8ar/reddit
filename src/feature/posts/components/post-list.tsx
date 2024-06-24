@@ -9,6 +9,7 @@ import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import ru from 'javascript-time-ago/locale/ru';
 import { usePathname, useRouter } from 'next/navigation';
+import { useAppSelector } from '~/store/hooks';
 TimeAgo.addDefaultLocale(en);
 TimeAgo.addLocale(ru);
 interface Props {
@@ -16,17 +17,7 @@ interface Props {
 }
 
 export function PostList({ searchParams }: Props) {
-  const router = useRouter();
-  const pathname = usePathname();
-
-  useEffect(() => {
-    if (Object.keys(searchParams).length !== 0) return;
-
-    router.replace(`${pathname}?sortBy=date&order=asc`);
-  }, [pathname, router, searchParams]);
-
   const posts = useSelector((state: RootState) => selectSortedPosts(state, searchParams));
-
   if (posts.length === 0) {
     return <div>No posts</div>;
   }

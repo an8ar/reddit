@@ -18,6 +18,7 @@ export function Post({ title, imageUrls, text, linkUrl, createdAt, voteCount, id
   const handleClick = () => {
     router.push(`${pathname}/post/${id}`);
   };
+
   return (
     <div
       className="flex flex-col gap-2 hover:bg-slate-100 rounded-lg px-4 py-2 hover:cursor-pointer"

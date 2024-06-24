@@ -27,7 +27,7 @@ export function Header({ locale }: Props) {
 
   return (
     <header className=" px-4 py-2 h-14 border-b flex gap-3 items-center justify-between ">
-      <Link href={'/'} className="flex gap-3 items-center ">
+      <Link href={`/${locale}?sortBy=date&order=asc`} className="flex gap-3 items-center ">
         <Image src="/reddit.svg" alt="Reddit" className="max-h-10" width={32} height={32} />
         <span className="font-extrabold  text-3xl text-orange-600">reddit</span>
       </Link>

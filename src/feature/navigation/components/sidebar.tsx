@@ -21,7 +21,7 @@ export function SideBar({ locale }: Props) {
       {
         name: t('home'),
         icon: <Icon icon="ic:round-home" className="text-[28px]" />,
-        href: `/${locale}`,
+        href: `/${locale}?sortBy=date&order=asc`,
       },
       {
         name: t('popular'),
