@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import { Input } from '~/components/ui/input';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useAppSelector } from '~/store/hooks';
 import { InputPost } from './input-post';
