@@ -30,15 +30,11 @@ export function SelectLanguage() {
       <SelectTrigger className="w-full border-none bg-none hover:bg-inherit pl-0 ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none">
         <SelectValue defaultValue={locale} />
       </SelectTrigger>
-      <SelectContent onClick={(e) => e.stopPropagation()}>
+      <SelectContent>
         <SelectGroup>
           <SelectLabel>{t('title')}</SelectLabel>
-          <SelectItem value="en" onClick={(e) => e.stopPropagation()}>
-            {t('locale', { locale: 'en' })}
-          </SelectItem>
-          <SelectItem value="ru" onClick={(e) => e.stopPropagation()}>
-            {t('locale', { locale: 'ru' })}
-          </SelectItem>
+          <SelectItem value="en">{t('locale', { locale: 'en' })}</SelectItem>
+          <SelectItem value="ru">{t('locale', { locale: 'ru' })}</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
