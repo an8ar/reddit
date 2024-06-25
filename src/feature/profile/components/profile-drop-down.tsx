@@ -1,4 +1,6 @@
 import { User, Globe } from 'lucide-react';
+import { useLocale } from 'next-intl';
+import Link from 'next/link';
 import { SelectLanguage } from '~/components/select-language';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 
@@ -13,6 +15,8 @@ import {
 } from '~/components/ui/dropdown-menu';
 
 export function ProfileDropDown() {
+  const locale = useLocale();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,10 +29,13 @@ export function ProfileDropDown() {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
-          </DropdownMenuItem>
+          <Link href={`/${locale}/profile`}>
+            <DropdownMenuItem>
+              <User className="mr-2 h-4 w-4" />
+              <span>Profile</span>
+            </DropdownMenuItem>
+          </Link>
+
           <DropdownMenuItem>
             <Globe className="mr-2 h-4 w-4" />
             <SelectLanguage />
