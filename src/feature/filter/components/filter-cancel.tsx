@@ -14,6 +14,8 @@ export function FilterCancel() {
 
   const params = new URLSearchParams(searchParams.toString());
 
+  const hasFilters = filterKeys.some((key) => params.get(key));
+
   const handleClick = () => {
     filterKeys.forEach((key) => {
       if (params.get(key)) {
@@ -23,6 +25,8 @@ export function FilterCancel() {
 
     router.replace(`${pathname}?${params.toString()}`);
   };
+
+  if (!hasFilters) return <></>;
 
   return (
     <Badge
