@@ -21,12 +21,12 @@ export function HeaderInput() {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (
-      inputRef.current &&
-      !inputRef.current.contains(event.target as Node) &&
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node)
-    ) {
+    const clickedOutsideInput =
+      inputRef.current && !inputRef.current.contains(event.target as Node);
+    const clickedOutsideDropdown =
+      dropdownRef.current && !dropdownRef.current.contains(event.target as Node);
+
+    if (clickedOutsideInput && clickedOutsideDropdown) {
       setIsVisible(false);
     }
   };
