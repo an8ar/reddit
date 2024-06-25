@@ -27,7 +27,7 @@ export function SelectLanguage() {
 
   return (
     <Select defaultValue={locale} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[180px] hidden md:contents ">
         <SelectValue defaultValue={locale} />
       </SelectTrigger>
       <SelectContent>
