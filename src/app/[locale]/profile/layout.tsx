@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Skeleton } from '~/components/ui/skeleton';
 
 export default async function RootLayout({
   children,
@@ -23,7 +22,7 @@ export default async function RootLayout({
         </div>
       </div>
 
-      <nav className="flex justify-between text-sm font-medium">
+      <nav className="flex justify-between text-sm font-medium flex-wrap">
         <Link href={`/${locale}/profile`} className="rounded-full hover:bg-slate-300 px-3 py-2">
           Overview
         </Link>
