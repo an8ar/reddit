@@ -8,7 +8,6 @@ import {
 } from '~/components/ui/accordion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-
 interface Props {
   locale: string;
 }
@@ -38,7 +37,7 @@ export function SideBar({ locale }: Props) {
   );
 
   return (
-    <aside className="px-4 py-2 flex-none w-64 border-r ">
+    <div className="px-4 py-2 flex-none w-full md:w-64 md:border-r ">
       <ul className="space-y-0">
         {feeds.map((feed) => (
           <li key={feed.name}>
@@ -75,6 +74,6 @@ export function SideBar({ locale }: Props) {
           <AccordionContent>Noting here {';)'}</AccordionContent>
         </AccordionItem>
       </Accordion>
-    </aside>
+    </div>
   );
 }
