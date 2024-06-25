@@ -13,6 +13,8 @@ export function DateFilterCancel() {
 
   const params = new URLSearchParams(searchParams.toString());
 
+  const hasDateRangeFilter = params.get('date');
+
   const handleClick = () => {
     if (params.get('date')) {
       params.delete('date');
@@ -20,7 +22,7 @@ export function DateFilterCancel() {
 
     router.replace(`${pathname}?${params.toString()}`);
   };
-
+  if (!!!hasDateRangeFilter) return <></>;
   return (
     <Badge
       variant={'secondary'}
