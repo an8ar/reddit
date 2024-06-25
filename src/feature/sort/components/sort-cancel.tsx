@@ -12,18 +12,23 @@ export function SortCancel() {
   const pathname = usePathname();
 
   const params = new URLSearchParams(searchParams.toString());
+
+  const sortBy = params.get('sortBy');
+
+  const order = params.get('order');
+
+  const hasSort = (!!sortBy && sortBy !== 'date') || (!!order && order !== 'asc');
+
   const handleClick = () => {
-    const sortBy = params.get('sortBy');
-
-    const order = params.get('order');
-
-    if ((!!sortBy && sortBy !== 'date') || (!!order && order !== 'asc')) {
+    if (hasSort) {
       params.set('sortBy', 'date');
       params.set('order', 'asc');
     }
 
     router.replace(`${pathname}?${params.toString()}`);
   };
+
+  if (!hasSort) return <></>;
 
   return (
     <Badge
