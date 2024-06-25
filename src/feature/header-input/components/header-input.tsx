@@ -39,17 +39,17 @@ export function HeaderInput() {
   }, []);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full flex flex-1  justify-center min-w-16">
       <Input
         ref={inputRef}
         placeholder={t('input')}
-        className="max-w-xl ml-40 bg-slate-200/65 hover:bg-slate-200 relative z-10 rounded-full focus-visible:ring-0 focus-visible:ring-offset-0"
+        className=" bg-slate-200/65 hover:bg-slate-200 relative z-10 rounded-full focus-visible:ring-0 focus-visible:ring-offset-0"
         onFocus={handleFocus}
       />
       {isVisible && (
         <div
           ref={dropdownRef}
-          className="bg-white shadow-lg rounded-lg mt-2 absolute top-0 pt-12 w-full max-w-xl ml-40"
+          className="bg-white shadow-lg rounded-lg mt-2 absolute top-0 pt-12 w-full "
         >
           {posts.slice(0, 9).map((post) => (
             <InputPost key={post.id} {...post} setIsVisible={setIsVisible} />
