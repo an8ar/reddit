@@ -1,6 +1,5 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { Button } from '~/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '~/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '~/components/ui/sheet';
 import { SideBar } from './sidebar';
 
 interface Props {
@@ -12,11 +11,10 @@ export function BurgerMenu(props: Props) {
     <aside>
       <Sheet>
         <SheetTrigger className="md:hidden">
-          <Button variant="outline">
-            <Icon icon={'iconamoon:menu-burger-horizontal'} />
-          </Button>
+          <Icon icon={'iconamoon:menu-burger-horizontal'} />
         </SheetTrigger>
-        <SheetContent side={'left'}>
+        <SheetContent side={'left'} className="p-0 pt-4">
+          <SheetTitle className="hidden" />
           <SideBar {...props} />
         </SheetContent>
       </Sheet>
