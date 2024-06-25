@@ -11,6 +11,8 @@ import { useTranslations } from 'next-intl';
 import { Message } from './message';
 import { HeaderInput } from '~/feature/header-input';
 import { BurgerMenu } from './burger-menu';
+import { ProfileBottomDrawer, ProfileDropDown } from '~/feature/profile';
+import { useResponsive } from '~/hooks/use-responsive';
 interface Props {
   locale: string;
 }
@@ -19,6 +21,8 @@ export function Header({ locale }: Props) {
   const router = useRouter();
 
   const t = useTranslations('Header');
+
+  const isDesktop = useResponsive('up', 'md');
 
   const handleClick = () => {
     router.push(`/${locale}/create-post`);
@@ -44,15 +48,7 @@ export function Header({ locale }: Props) {
           <Icon icon="teenyicons:add-outline" className="h-5 w-5" />
           <span className="hidden md:contents">{t('button')} </span>
         </Button>
-
-        <SelectLanguage />
-
-        <Link href={`/${locale}/profile`}>
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>AS</AvatarFallback>
-          </Avatar>
-        </Link>
+        {isDesktop ? <ProfileDropDown /> : <ProfileBottomDrawer />}
       </nav>
     </header>
   );
