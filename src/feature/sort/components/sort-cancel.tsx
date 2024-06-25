@@ -22,6 +22,7 @@ export function SortCancel() {
   const handleClick = () => {
     if (hasSort) {
       params.set('sortBy', 'date');
+
       params.set('order', 'asc');
     }
 

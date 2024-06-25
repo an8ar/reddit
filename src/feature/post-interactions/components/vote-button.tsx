@@ -10,10 +10,13 @@ interface Props {
 
 export function VoteButton({ voteCount, postId }: Props) {
   const dispatch = useAppDispatch();
+
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
+
     e.stopPropagation();
   };
+
   const handleUpVote = () => {
     dispatch(upVote({ postId }));
   };
