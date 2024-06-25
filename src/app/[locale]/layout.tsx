@@ -31,8 +31,10 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <StoreProvider>
             <Header locale={locale} />
-            <div className="flex gap-10 w-9/12">
-              <SideBar locale={locale} />
+            <div className="flex gap-10 md:w-9/12">
+              <aside className="hidden md:block">
+                <SideBar locale={locale} />
+              </aside>
 
               {children}
             </div>
