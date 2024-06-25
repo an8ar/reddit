@@ -16,11 +16,9 @@ export function InputPost({ title, imageUrls, text, linkUrl, id, setIsVisible }:
   const handleClick = () => {
     setIsVisible(false);
 
-    if (pathname.includes('post')) {
-      router.push(`${id}`);
-    } else {
-      router.push(`${pathname}/post/${id}`);
-    }
+    const newRoute = pathname.includes('post') ? `${id}` : `${pathname}/post/${id}`;
+
+    router.push(newRoute);
   };
 
   return (
@@ -29,8 +27,8 @@ export function InputPost({ title, imageUrls, text, linkUrl, id, setIsVisible }:
       onClick={handleClick}
     >
       <div>
-        <div className="text-sm font-semibold">{title}</div>
-        {text && <p className="text-xs text-gray-600">{text}</p>}
+        <span className="text-sm font-semibold">{title}</span>
+        {!!text && <p className="text-xs text-gray-600">{text}</p>}
 
         <span className="font-semibold text-xs rounded-2xl bg-slate-200 px-1">an8ar</span>
 
