@@ -8,7 +8,7 @@ export default function Home({
   searchParams: { [key: string]: string | undefined };
 }) {
   return (
-    <main className="flex-1 flex flex-col gap-10">
+    <main className="flex-1 flex flex-col gap-4 md:gap-10">
       <header className=" border-b py-2 flex flex-col gap-2">
         <div className="flex gap-4 flex-wrap">
           <Filter />
@@ -21,7 +21,7 @@ export default function Home({
           <DateFilterCancel />
         </div>
       </header>
-      <section className=" ">
+      <section className="">
         <PostList searchParams={searchParams} />
       </section>
     </main>

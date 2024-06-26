@@ -43,7 +43,7 @@ export function HeaderInput() {
       <Input
         ref={inputRef}
         placeholder={t('input')}
-        className=" bg-slate-200/65 hover:bg-slate-200 relative z-10 rounded-full focus-visible:ring-0 focus-visible:ring-offset-0"
+        className=" bg-slate-200/65 hover:bg-slate-200 relative z-10 rounded-full focus-visible:ring-0 focus-visible:ring-offset-0 text-base"
         onFocus={handleFocus}
       />
       {isVisible && (
