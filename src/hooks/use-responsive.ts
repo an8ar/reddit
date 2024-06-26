@@ -1,43 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const breakpoints = {
-  sm: '640px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1280px',
-  '2xl': '1536px',
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  '2xl': 1536,
 };
 
 type Query = 'up' | 'down' | 'between';
 type Key = keyof typeof breakpoints | number;
 
 export function useResponsive(query: Query, key: Key, endKey?: Key): boolean {
-  const [matches, setMatches] = useState(false);
+  let mediaQueryObject = {};
 
-  useEffect(() => {
-    let mediaQueryString = '';
+  if (query === 'up') {
+    mediaQueryObject = { minWidth: typeof key === 'number' ? key : breakpoints[key] };
+  } else if (query === 'down') {
+    mediaQueryObject = { maxWidth: typeof key === 'number' ? key : breakpoints[key] };
+  } else if (query === 'between' && endKey !== undefined) {
+    const startWidth = typeof key === 'number' ? key : breakpoints[key];
+    const endWidth = typeof endKey === 'number' ? endKey : breakpoints[endKey];
+    mediaQueryObject = { minWidth: startWidth, maxWidth: endWidth };
+  }
 
-    if (query === 'up') {
-      mediaQueryString = `(min-width: ${typeof key === 'number' ? key + 'px' : breakpoints[key]})`;
-    } else if (query === 'down') {
-      mediaQueryString = `(max-width: ${typeof key === 'number' ? key + 'px' : breakpoints[key]})`;
-    } else if (query === 'between' && endKey !== undefined) {
-      const startWidth = typeof key === 'number' ? key + 'px' : breakpoints[key];
-
-      const endWidth = typeof endKey === 'number' ? endKey + 'px' : breakpoints[endKey];
-
-      mediaQueryString = `(min-width: ${startWidth}) and (max-width: ${endWidth})`;
-    }
-
-    const mediaQueryList = window.matchMedia(mediaQueryString);
-
-    const documentChangeHandler = () => setMatches(mediaQueryList.matches);
-
-    mediaQueryList.addEventListener('change', documentChangeHandler);
-    setMatches(mediaQueryList.matches);
-
-    return () => mediaQueryList.removeEventListener('change', documentChangeHandler);
-  }, [query, key, endKey]);
-
-  return matches;
+  return useMediaQuery(mediaQueryObject);
 }
