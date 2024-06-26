@@ -46,7 +46,7 @@ export function AutoComplete({ posts }: Props) {
             return 0;
           }}
         >
-          <CommandInput placeholder="Search option..." className="text-base" />
+          <CommandInput placeholder="Search reddit" className="text-base" />
           <CommandList className="p-0 max-h-screen md:max-h-[400px]    md:h-3/4">
             <CommandEmpty className="  text-center block ">No option found.</CommandEmpty>
             <CommandGroup>
