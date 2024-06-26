@@ -10,7 +10,7 @@ export default async function RootLayout({
   params: { locale: string };
 }>) {
   return (
-    <header className="w-full ml-16">
+    <header className="w-full  p-2 md:ml-16">
       <div className="my-3 flex gap-4">
         <Avatar className="size-28">
           <AvatarImage src="https://github.com/shadcn.png" />
@@ -22,7 +22,7 @@ export default async function RootLayout({
         </div>
       </div>
 
-      <nav className="flex justify-between text-sm font-medium flex-wrap">
+      <nav className="flex justify-start text-sm font-medium flex-wrap">
         <Link href={`/${locale}/profile`} className="rounded-full hover:bg-slate-300 px-3 py-2">
           Overview
         </Link>
