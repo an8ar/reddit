@@ -52,9 +52,11 @@ export function PostForm({ closeModal, type }: Props) {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <section className="flex flex-col gap-2 mt-2">
-        <RHFTextArea name="title" placeholder={t('title')} maxLength={300} />
+        <RHFTextArea name="title" placeholder={t('title')} maxLength={300} className="text-base" />
 
-        {type === 'text' && <RHFTextArea name="text" placeholder={t('body')} className="h-40" />}
+        {type === 'text' && (
+          <RHFTextArea name="text" placeholder={t('body')} className="h-40 text-base" />
+        )}
 
         {type === 'image' && photos.length <= 0 && (
           <FileUploadArea handleFileChange={handleFileChange} />
