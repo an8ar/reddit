@@ -3,34 +3,31 @@ import React from 'react';
 import { Post as IPost } from '~/feature/posts/types';
 import Image from 'next/image';
 import { useRouter, usePathname, useParams } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
-interface Props extends IPost {
-  setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
+interface Props extends IPost {}
 
-export function InputPost({ title, imageUrls, text, linkUrl, id, setIsVisible }: Props) {
+export function InputPost({ title, imageUrls, text, linkUrl, id }: Props) {
   const router = useRouter();
 
-  const pathname = usePathname();
+  const locale = useLocale();
 
   const handleClick = () => {
-    setIsVisible(false);
-
-    const newRoute = pathname.includes('post') ? `${id}` : `${pathname}/post/${id}`;
-
-    router.push(newRoute);
+    router.push(`/${locale}/post/${id}`);
   };
 
   return (
     <div
-      className="flex justify-between gap-1 hover:bg-slate-100 px-4 py-2 hover:cursor-pointer"
+      className="flex-1 flex hover:bg-slate-100 px-4 py-2 hover:cursor-pointer justify-between "
       onClick={handleClick}
     >
       <div>
-        <span className="text-sm font-semibold">{title}</span>
+        <div className="text-sm font-semibold">{title}</div>
         {!!text && <p className="text-xs text-gray-600">{text}</p>}
 
-        <span className="font-semibold text-xs rounded-2xl bg-slate-200 px-1">an8ar</span>
+        <div className="font-semibold text-xs rounded-2xl bg-slate-200 px-1 inline-block">
+          an8ar
+        </div>
 
         {linkUrl && (
           <a href={linkUrl} target="_blank" className="text-blue-700 visited:text-violet-500">
@@ -39,17 +36,15 @@ export function InputPost({ title, imageUrls, text, linkUrl, id, setIsVisible }:
         )}
       </div>
 
-      <div>
-        {imageUrls && (
-          <Image
-            src={imageUrls[0]}
-            className="rounded-lg object-fit"
-            alt={title}
-            width={100}
-            height={100}
-          />
-        )}
-      </div>
+      {imageUrls && (
+        <Image
+          src={imageUrls[0]}
+          className="rounded-lg object-fit"
+          alt={title}
+          width={100}
+          height={100}
+        />
+      )}
     </div>
   );
 }
