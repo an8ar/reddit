@@ -8,19 +8,26 @@ import { Button } from '~/components/ui/button';
 import { Calendar } from '~/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 import { useDateRangeFilter } from '../hooks/use-date-range-filter';
+import { useState } from 'react';
 
 export function DateRangeFilter({ className }: React.HTMLAttributes<HTMLDivElement>) {
-  const { date, handleDateSelect } = useDateRangeFilter();
+  const [open, setOpen] = useState(false);
+
+  const handleOpenChange = () => {
+    setOpen((prev) => !prev);
+  };
+
+  const { date, handleDateSelect } = useDateRangeFilter({ handleOpenChange });
 
   return (
     <div className={cn('grid gap-2 text-sm', className)}>
-      <Popover>
+      <Popover open={open} onOpenChange={handleOpenChange}>
         <PopoverTrigger asChild>
           <Button
             id="date"
             variant={'outline'}
             className={cn(
-              'justify-start text-left font-normal text-xs',
+              'justify-start text-left font-normal text-xs border-none bg-none',
               !date && 'text-muted-foreground',
             )}
           >

@@ -3,12 +3,19 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { parseISO } from 'date-fns';
 import { DateRange } from 'react-day-picker';
 
-export function useDateRangeFilter() {
+interface Props {
+  handleOpenChange: () => void;
+}
+
+export function useDateRangeFilter({ handleOpenChange }: Props) {
   const searchParams = useSearchParams();
+
   const router = useRouter();
+
   const pathname = usePathname();
 
   const paramsDateRange = searchParams.get('date');
+
   const [paramsDateFrom, paramsDateTo] = paramsDateRange
     ? paramsDateRange.split(';')
     : [undefined, undefined];
@@ -29,10 +36,13 @@ export function useDateRangeFilter() {
 
   const handleDateSelect = (dateRange: DateRange | undefined) => {
     setDate(dateRange);
+
     const params = new URLSearchParams(searchParams.toString());
 
     if (dateRange?.from && dateRange?.to) {
       params.set('date', `${dateRange.from.toISOString()};${dateRange.to.toISOString()}`);
+
+      handleOpenChange();
     } else {
       params.delete('date');
     }
