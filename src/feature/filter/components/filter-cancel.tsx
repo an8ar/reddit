@@ -26,7 +26,7 @@ export function FilterCancel() {
     router.replace(`${pathname}?${params.toString()}`);
   };
 
-  if (!hasFilters) return <></>;
+  if (!hasFilters) return null;
 
   return (
     <Badge

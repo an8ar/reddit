@@ -29,7 +29,7 @@ export function SortCancel() {
     router.replace(`${pathname}?${params.toString()}`);
   };
 
-  if (!hasSort) return <></>;
+  if (!hasSort) return null;
 
   return (
     <Badge

@@ -22,7 +22,7 @@ export function DateFilterCancel() {
 
     router.replace(`${pathname}?${params.toString()}`);
   };
-  if (!!!hasDateRangeFilter) return <></>;
+  if (!!!hasDateRangeFilter) return null;
   return (
     <Badge
       variant={'secondary'}
