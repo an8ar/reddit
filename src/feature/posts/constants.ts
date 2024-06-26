@@ -1,28 +1,5 @@
 export const initialPosts = [
   {
-    id: '1',
-    title: 'ansar',
-    text: 'serikbayev',
-    createdAt: new Date('2024-03-22').toISOString(),
-    voteCount: 394,
-  },
-  {
-    id: '2',
-    title: 'cristiano',
-    text: 'ronaldo',
-    createdAt: new Date('2024-02-15').toISOString(),
-    voteCount: 187,
-  },
-  {
-    id: '3',
-    title: 'ansar',
-    imageUrls: [
-      'https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg',
-    ],
-    createdAt: new Date('2024-05-29').toISOString(),
-    voteCount: 158,
-  },
-  {
     id: '4',
     title: "Google's New AI",
     text: 'Google has announced a new AI model that is expected to revolutionize the tech industry.',
