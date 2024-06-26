@@ -10,12 +10,12 @@ export default function Home({
   return (
     <main className="flex-1 flex flex-col gap-10">
       <header className=" border-b py-2 flex flex-col gap-2">
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <Filter />
           <Sort />
           <DateRangeFilter />
         </div>
-        <div className="flex gap-2 ml-2">
+        <div className="flex gap-2 ml-2 flex-wrap">
           <FilterCancel />
           <SortCancel />
           <DateFilterCancel />
