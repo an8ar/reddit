@@ -1,46 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import { format, parseISO } from 'date-fns';
-import { DateRange } from 'react-day-picker';
+import { format } from 'date-fns';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
 import { Calendar } from '~/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useDateRangeFilter } from '../hooks/use-date-range-filter';
 
 export function DateRangeFilter({ className }: React.HTMLAttributes<HTMLDivElement>) {
-  const searchParams = useSearchParams();
-
-  const router = useRouter();
-
-  const pathname = usePathname();
-
-  const paramsDateRange = searchParams.get('date');
-
-  const [paramsDateFrom, paramsDateTo] = paramsDateRange
-    ? paramsDateRange.split(';')
-    : [undefined, undefined];
-
-  const [date, setDate] = React.useState<DateRange | undefined>(
-    paramsDateFrom && paramsDateTo
-      ? { from: parseISO(paramsDateFrom), to: parseISO(paramsDateTo) }
-      : undefined,
-  );
-
-  const handleDateSelect = (dateRange: DateRange | undefined) => {
-    setDate(dateRange);
-    const params = new URLSearchParams(searchParams.toString());
-
-    if (dateRange?.from && dateRange?.to) {
-      params.set('date', `${dateRange.from.toISOString()};${dateRange.to.toISOString()}`);
-    }
-    if (dateRange === undefined) {
-      params.delete('date');
-    }
-    router.replace(`${pathname}?${params.toString()}`);
-  };
+  const { date, handleDateSelect } = useDateRangeFilter();
 
   return (
     <div className={cn('grid gap-2 text-sm', className)}>
