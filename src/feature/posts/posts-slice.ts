@@ -66,7 +66,7 @@ export const postSlice = createSlice({
   },
 });
 
-export const { addPost, updateForm, upVote, downVote } = postSlice.actions;
+export const { addPost, updateForm, upVote, downVote, deletePost } = postSlice.actions;
 
 export const postReducer = persistReducer(
   {
