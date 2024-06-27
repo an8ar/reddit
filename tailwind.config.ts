@@ -75,11 +75,16 @@ const config = {
           '50%': { transform: 'scale(0.9)' },
           '100%': { transform: 'scale(1)' },
         },
+        fadeOut: {
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateX(500px)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         clickAnimation: 'clickAnimation 0.2s ease',
+        fadeOut: 'fadeOut 0.5s forwards',
       },
     },
   },
