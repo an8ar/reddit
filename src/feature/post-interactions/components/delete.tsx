@@ -1,24 +1,31 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import React from 'react';
 import { Button } from '~/components/ui/button';
-import { deletePost } from '~/feature/posts/posts-slice';
-import { useAppDispatch } from '~/store/hooks';
-
+import { useDeletePost } from '../hooks/use-delete-post';
 interface Props {
   postId: string;
 }
 
 export function Delete({ postId }: Props) {
-  const dispatch = useAppDispatch();
+  const handleDelete = useDeletePost();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.stopPropagation();
-    dispatch(deletePost({ postId }));
+
+    const buttonElement = event.currentTarget;
+
+    buttonElement.addEventListener(
+      'transitionend',
+      () => {
+        handleDelete(postId);
+      },
+      { once: true },
+    );
   };
 
   return (
     <Button
-      className="p-2 bg-slate-200 hover:bg-slate-300 rounded-full hover:text-red-400 transition ease-in-out hover:scale-125 duration-200 active:scale-75"
+      className="p-2 bg-slate-200 hover:bg-slate-300 rounded-full active:text-red-400 transition ease-in-out hover:scale-125 active:duration-1000 duration-200 active:scale-50 "
       size="icon"
       variant={'ghost'}
       onClick={handleClick}
