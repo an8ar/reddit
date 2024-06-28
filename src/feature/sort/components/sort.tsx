@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
 import { SortBy } from './sort-by';
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify/react';
 import { useTranslations } from 'next-intl';
 
 export function Sort() {

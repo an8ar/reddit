@@ -1,8 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { Check, ChevronsUpDown } from 'lucide-react';
-import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
 import {
   Command,
@@ -13,7 +11,7 @@ import {
   CommandList,
 } from '~/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify/react';
 import { Post } from '~/feature/posts/types';
 import { InputPost } from '~/feature/header-input/components/input-post';
 

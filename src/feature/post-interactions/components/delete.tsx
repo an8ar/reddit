@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify/react';
 import React from 'react';
 import { Button } from '~/components/ui/button';
 import { useDeletePost } from '../hooks/use-delete-post';

@@ -1,7 +1,7 @@
 'use client';
 
 import { Badge } from '~/components/ui/badge';
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify/react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export function DateFilterCancel() {
