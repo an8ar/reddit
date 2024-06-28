@@ -7,6 +7,7 @@ import { AppStore, RootState, makeStore } from '~/store';
 
 interface IntlProviderProps extends Omit<IntlConfig, 'locale'> {
   locale: string;
+  messages: Record<string, any>;
 }
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
