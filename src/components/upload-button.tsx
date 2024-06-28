@@ -1,6 +1,6 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
+import { Icon } from '@iconify/react';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
 
 interface Props {
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

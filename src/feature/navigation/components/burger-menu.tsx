@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify/react';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '~/components/ui/sheet';
 import { SideBar } from './sidebar';
 

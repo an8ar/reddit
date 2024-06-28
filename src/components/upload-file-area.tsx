@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify/react';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { useTranslations } from 'next-intl';
