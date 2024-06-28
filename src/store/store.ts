@@ -6,6 +6,7 @@ const reducers = {
 };
 
 const combinedReducers = combineReducers(reducers);
+
 export const makeStore = () => {
   return configureStore({
     reducer: combinedReducers,
