@@ -13,14 +13,15 @@ import { useTranslations } from 'next-intl';
 
 export function Filter() {
   const t = useTranslations('Filter');
-  //
+
   return (
     <article>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
-            className="border-0 text-xs ring-0 px-3 py-2 focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="border-0 px-3 py-2 text-xs ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+            id="filter-button"
           >
             {t('button')}
             <span className="ml-2">
