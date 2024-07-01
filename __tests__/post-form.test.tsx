@@ -3,17 +3,7 @@ import { renderWithProviders } from '../utils/render-with-providers'; // Adjust 
 import { PostForm } from '~/feature/posts/components/post-form';
 import reducer, { addPost } from '~/feature/posts/posts-slice';
 import enMessage from '../messages/en.json';
-jest.mock('next/navigation', () => ({
-  useRouter() {
-    return {
-      route: '/',
-      pathname: '',
-      query: '',
-      asPath: '',
-      push: jest.fn(),
-    };
-  },
-}));
+jest.mock('next/navigation');
 
 test('post form rendering', () => {
   const { container } = renderWithProviders(<PostForm type="image" />, {
