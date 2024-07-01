@@ -69,7 +69,7 @@ export function FilterForm() {
   };
 
   return (
-    <FormProvider methods={methods} className="flex flex-col gap-2 m-2">
+    <FormProvider methods={methods} className="m-2 flex flex-col gap-2" id={'filter-form'}>
       <RHFCheckbox
         key="toggleAll"
         name="toggleAll"
