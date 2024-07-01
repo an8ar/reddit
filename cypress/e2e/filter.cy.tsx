@@ -27,4 +27,14 @@ describe('Filter Component', () => {
     cy.get('#checkbox-isImage').click().should('have.attr', 'aria-checked', 'false');
     cy.url().should('not.include', 'isImage=true');
   });
+
+  it('should toggle isLink checkbox and update the URL', () => {
+    cy.get('#filter-button').click();
+
+    cy.get('#checkbox-isLink').click().should('have.attr', 'aria-checked', 'true');
+    cy.url().should('include', 'isLink=true');
+
+    cy.get('#checkbox-isLink').click().should('have.attr', 'aria-checked', 'false');
+    cy.url().should('not.include', 'isLink=true');
+  });
 });
