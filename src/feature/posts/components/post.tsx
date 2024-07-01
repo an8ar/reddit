@@ -21,7 +21,7 @@ export function Post({ title, imageUrls, text, linkUrl, createdAt, voteCount, id
 
   return (
     <div
-      className="flex flex-col gap-2 hover:bg-slate-100 rounded-lg px-4 py-2 hover:cursor-pointer"
+      className="flex flex-col gap-2 rounded-lg px-4 py-2 hover:cursor-pointer hover:bg-slate-100"
       onClick={handleClick}
       id={`post-${id}`}
     >
@@ -36,7 +36,7 @@ export function Post({ title, imageUrls, text, linkUrl, createdAt, voteCount, id
       {imageUrls && (
         <Image
           src={imageUrls[0]}
-          className=" rounded-lg object-contain bg-black w-full"
+          className="w-full rounded-lg bg-black object-contain"
           alt={title}
           width={600}
           height={600}
