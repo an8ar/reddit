@@ -18,6 +18,7 @@ const config: Config = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  setupFilesAfterEnv: ['<rootDir>/utils/setup-tests.ts'],
 };
 
 export default createJestConfig(config);
