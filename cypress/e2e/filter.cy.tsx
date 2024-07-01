@@ -8,4 +8,14 @@ describe('Filter Component', () => {
 
     cy.get('#filter-form').should('be.visible');
   });
+
+  it('should toggle isText checkbox and update the URL', () => {
+    cy.get('#filter-button').click();
+
+    cy.get('#checkbox-isText').click().should('have.attr', 'aria-checked', 'true');
+    cy.url().should('include', 'isText=true');
+
+    cy.get('#checkbox-isText').click().should('have.attr', 'aria-checked', 'false');
+    cy.url().should('not.include', 'isText=true');
+  });
 });
