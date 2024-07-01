@@ -69,7 +69,7 @@ export function FilterForm() {
   };
 
   return (
-    <FormProvider methods={methods} className="m-2 flex flex-col gap-2" id={'filter-form'}>
+    <FormProvider methods={methods} className="m-2 flex flex-col gap-2" id="filter-form">
       <RHFCheckbox
         key="toggleAll"
         name="toggleAll"
@@ -77,6 +77,7 @@ export function FilterForm() {
         onChange={toggleAllFilters}
         withIndicator={false}
         className="bg-black text-white"
+        id="checkbox-toggleAll"
         icon={allFieldsSelected() ? 'material-symbols:remove' : 'lets-icons:done-all-alt-round'}
       />
 
@@ -87,6 +88,7 @@ export function FilterForm() {
           label={t(key.replace('is', '').toLowerCase())}
           onChange={updateFilters}
           withIndicator={true}
+          id={`checkbox-${key}`}
           icon="ic:outline-check"
         />
       ))}

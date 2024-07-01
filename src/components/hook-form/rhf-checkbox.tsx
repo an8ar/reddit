@@ -10,6 +10,7 @@ interface RHFCheckboxProps {
   className?: string;
   icon: string;
   withIndicator: boolean;
+  id?: string;
 }
 
 export function RHFCheckbox({
@@ -19,6 +20,7 @@ export function RHFCheckbox({
   onChange,
   className,
   icon,
+  id,
   withIndicator,
 }: RHFCheckboxProps) {
   const { control } = useFormContext();
@@ -43,7 +45,7 @@ export function RHFCheckbox({
       control={control}
       name={name}
       render={() => (
-        <FormItem className="flex flex-row items-center space-x-3 space-y-0 rounded-md ">
+        <FormItem className="flex flex-row items-center space-x-3 space-y-0 rounded-md">
           <FormControl>
             <Checkbox
               checked={value}
@@ -52,9 +54,10 @@ export function RHFCheckbox({
               className={className}
               icon={icon}
               withIndicator={withIndicator}
+              id={id}
             />
           </FormControl>
-          <div className="flex gap-4 items-center">
+          <div className="flex items-center gap-4">
             {label && <FormLabel className="text-sm">{label}</FormLabel>}
             {description?.icon}
           </div>
