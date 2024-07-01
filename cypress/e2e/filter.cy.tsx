@@ -18,4 +18,13 @@ describe('Filter Component', () => {
     cy.get('#checkbox-isText').click().should('have.attr', 'aria-checked', 'false');
     cy.url().should('not.include', 'isText=true');
   });
+  it('should toggle isImage checkbox and update the URL', () => {
+    cy.get('#filter-button').click();
+
+    cy.get('#checkbox-isImage').click().should('have.attr', 'aria-checked', 'true');
+    cy.url().should('include', 'isImage=true');
+
+    cy.get('#checkbox-isImage').click().should('have.attr', 'aria-checked', 'false');
+    cy.url().should('not.include', 'isImage=true');
+  });
 });
