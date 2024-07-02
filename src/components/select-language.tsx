@@ -20,14 +20,13 @@ export function SelectLanguage() {
 
   const handleLanguageChange = (value: string) => {
     const newPath = pathname.replace(`/${locale}`, `/${value}`);
-    console.log(newPath);
 
     router.push(`${newPath}?${searchParams}`);
   };
 
   return (
     <Select defaultValue={locale} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-full border-none bg-none hover:bg-inherit pl-0 ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none">
+      <SelectTrigger className="w-full border-none bg-none pl-0 ring-0 hover:bg-inherit focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
         <SelectValue defaultValue={locale} />
       </SelectTrigger>
       <SelectContent>
