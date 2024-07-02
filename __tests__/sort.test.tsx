@@ -4,8 +4,6 @@ import { renderWithProviders } from '../utils/render-with-providers';
 import { Sort } from '~/feature/sort';
 import enMessages from '../messages/en.json';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
 
 jest.mock('next/navigation', () => ({
   __esModule: true,
