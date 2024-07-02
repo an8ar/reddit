@@ -4,7 +4,6 @@ import { renderWithProviders } from '../utils/render-with-providers';
 import { PostForm } from '~/feature/posts/components/post-form';
 import enMessages from '../messages/en.json';
 import ruMessages from '../messages/ru.json';
-import '@testing-library/jest-dom';
 import { useRouter } from 'next/navigation';
 import { makeStore } from '~/store';
 
