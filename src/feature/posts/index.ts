@@ -1,3 +1,3 @@
-export * from "./components/post";
-export * from "./components/post-form-dialog";
-export * from "./components/post-list";
+export * from './components/post';
+export * from './components/forms-tab';
+export * from './components/post-list';
