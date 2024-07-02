@@ -8,10 +8,10 @@ interface Props {
 
 export const UploadButton = ({ handleFileChange }: Props) => {
   return (
-    <div className="absolute top-2 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div className="absolute left-4 top-2 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
       <Label
         htmlFor="inputPhoto"
-        className="inset-0  px-2 py-3 rounded-full hover:cursor-pointer flex items-center gap-2 bg-stone-400 text-white"
+        className="inset-0 flex items-center gap-2 rounded-full bg-stone-400 px-2 py-3 text-white hover:cursor-pointer"
       >
         <Icon icon="carbon:image" />
         <span>Add</span>
