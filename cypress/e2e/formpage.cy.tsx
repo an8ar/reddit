@@ -23,4 +23,13 @@ describe('FormPage', () => {
 
     cy.get('p').contains('Please fill out this field.').should('be.visible');
   });
+  it('Check form for case: isImage', () => {
+    cy.get('#buttonPhoto').click();
+    cy.get('textarea[name="title"]').type('john');
+    cy.get('#inputImage').selectFile('cypress/downloads/ww.jpg', { force: true, action: 'select' });
+
+    cy.get('button[type="submit"]').click();
+    cy.url().should('not.include', 'create-post');
+    cy.contains('john');
+  });
 });
