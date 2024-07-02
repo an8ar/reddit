@@ -1,6 +1,6 @@
 import { Filter } from '~/feature/filter';
-import { renderWithProviders } from '../utils/render-with-providers';
-import enMessages from '../messages/en.json';
+import { renderWithProviders } from '../../utils/render-with-providers';
+import enMessages from '../../messages/en.json';
 
 test('Filter component', () => {
   renderWithProviders(<Filter />, {
