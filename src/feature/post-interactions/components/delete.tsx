@@ -25,12 +25,12 @@ export function Delete({ postId }: Props) {
 
   return (
     <Button
-      className="p-2 bg-slate-200 hover:bg-slate-300 rounded-full active:text-red-400 transition ease-in-out hover:scale-125 active:duration-1000 duration-200 active:scale-50 "
+      className="delete-button rounded-full bg-slate-200 p-2 transition duration-200 ease-in-out hover:scale-125 hover:bg-slate-300 active:scale-50 active:text-red-400 active:duration-1000"
       size="icon"
       variant={'ghost'}
       onClick={handleClick}
     >
-      <Icon icon="mdi:trash-outline" className="size-4 " />
+      <Icon icon="mdi:trash-outline" className="size-4" />
     </Button>
   );
 }
