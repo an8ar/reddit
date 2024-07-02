@@ -25,8 +25,12 @@ export function FormsTab({ closeModal }: FormTabProps) {
   return (
     <Tabs defaultValue="text" className="" onValueChange={handleTabChange}>
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="text">{t('Tab.text')}</TabsTrigger>
-        <TabsTrigger value="image">{t('Tab.image')}</TabsTrigger>
+        <TabsTrigger id="buttonText" value="text">
+          {t('Tab.text')}
+        </TabsTrigger>
+        <TabsTrigger id="buttonPhoto" value="image">
+          {t('Tab.image')}
+        </TabsTrigger>
       </TabsList>
       <PostForm closeModal={closeModal} type={tabValue} />
     </Tabs>
