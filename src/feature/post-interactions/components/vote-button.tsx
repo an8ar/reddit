@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '~/components/ui/button';
 import { upVote, downVote } from '~/feature/posts/posts-slice';
 import { useAppDispatch } from '~/store/hooks';
+
 interface Props {
   voteCount: number;
   postId: string;
@@ -13,7 +14,6 @@ export function VoteButton({ voteCount, postId }: Props) {
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
-
     e.stopPropagation();
   };
 
@@ -26,25 +26,25 @@ export function VoteButton({ voteCount, postId }: Props) {
   };
 
   return (
-    <div className="flex items-center   bg-slate-200 rounded-full" onClick={handleClick}>
+    <div className="flex items-center rounded-full bg-slate-200" onClick={handleClick}>
       <Button
-        className="p-2 hover:bg-slate-300 rounded-full hover:text-red-400"
+        className="upvote-button rounded-full p-2 hover:bg-slate-300 hover:text-red-400"
         size="icon"
         variant={'ghost'}
         onClick={handleUpVote}
       >
-        <Icon icon="mynaui:fat-arrow-up" className=" size-4" />
+        <Icon icon="mynaui:fat-arrow-up" className="size-4" />
       </Button>
 
-      <span>{voteCount}</span>
+      <span className="vote-count">{voteCount}</span>
 
       <Button
-        className="p-2 hover:bg-slate-300 rounded-full hover:text-blue-600"
+        className="downvote-button rounded-full p-2 hover:bg-slate-300 hover:text-blue-600"
         size="icon"
         variant={'ghost'}
         onClick={handleDownVote}
       >
-        <Icon icon="mynaui:fat-arrow-down" className=" size-4 " />
+        <Icon icon="mynaui:fat-arrow-down" className="size-4" />
       </Button>
     </div>
   );
