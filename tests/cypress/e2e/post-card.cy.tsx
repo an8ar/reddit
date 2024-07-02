@@ -18,4 +18,12 @@ describe('Post card testing', () => {
         });
     });
   });
+
+  it('should disappear after deletion', () => {
+    cy.get('#post-4').within(() => {
+      cy.get('.delete-button').click();
+    });
+
+    cy.get('body').find('#post-4').should('not.exist');
+  });
 });
