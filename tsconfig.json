@@ -29,7 +29,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "jest.config.ts",
-    "utils/setup-tests.ts",
+    "tests/utils/setup-tests.ts",
     "__tests__/**/*"
   ],
   "exclude": ["node_modules", "cypress.config.ts", "tests/cypress"]
