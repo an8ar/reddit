@@ -1,9 +1,9 @@
 import React from 'react';
 import { screen, fireEvent, act } from '@testing-library/react';
-import { renderWithProviders } from '../utils/render-with-providers';
+import { renderWithProviders } from '../../utils/render-with-providers';
 import { PostForm } from '~/feature/posts/components/post-form';
-import enMessages from '../messages/en.json';
-import ruMessages from '../messages/ru.json';
+import enMessages from '../../messages/en.json';
+import ruMessages from '../../messages/ru.json';
 import { useRouter } from 'next/navigation';
 import { makeStore } from '~/store';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { screen, act } from '@testing-library/react';
-import { renderWithProviders } from '../utils/render-with-providers';
+import { renderWithProviders } from '../../utils/render-with-providers';
 import { Sort } from '~/feature/sort';
-import enMessages from '../messages/en.json';
+import enMessages from '../../messages/en.json';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 jest.mock('next/navigation', () => ({
