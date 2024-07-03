@@ -13,15 +13,19 @@ import {
 
 export function SelectLanguage() {
   const router = useRouter();
+
   const t = useTranslations('LocaleSwitcher');
+
   const pathname = usePathname();
+
   const searchParams = useSearchParams().toString();
+
   const locale = useLocale();
 
   const handleLanguageChange = (value: string) => {
     const newPath = pathname.replace(`/${locale}`, `/${value}`);
 
-    router.push(`${newPath}?${searchParams}`);
+    router.replace(`${newPath}?${searchParams}`);
   };
 
   return (
