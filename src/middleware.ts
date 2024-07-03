@@ -1,8 +1,9 @@
 import createMiddleware from 'next-intl/middleware';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
+import { locales } from './shared/locales';
 
 const handleI18nRouting = createMiddleware({
-  locales: ['en', 'ru'],
+  locales: locales,
 
   defaultLocale: 'en',
 });
